@@ -1,0 +1,104 @@
+### Open-WebUI-Dev-Cuda | Postgres | ChromaDB | Adminer ###
+### This file assumes that Ollama is installed locally and not in Docker ###
+### Volumes for this file are stored locally as well ###
+### OpenWebUI : Browser Based Model Interface ###
+
+services:
+  open-webui-cuda:
+    image: ghcr.io/open-webui/open-webui:dev-cuda
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities:
+                - gpu    
+    container_name: open-webui-dev-cuda
+### If you need to change the port, change 3000 ###    
+    ports:
+      - "3000:8080"
+### This is local. To switch to Docker Volume remove ./ ###
+### Your data will not copy over unless you use Docker cp commands ###      
+    volumes:
+      - ./.open-webui_data:/app/backend/data
+    restart: unless-stopped
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    depends_on:
+      - postgres
+    environment:
+      - 'ANONYMIZED_TELEMETRY=${ANONYMIZED_TELEMETRY}'
+      - 'DO_NOT_TRACK=${DO_NOT_TRACK}'
+      - 'SCARF_NO_ANALYTICS=${SCARF_NO_ANALYTICS}'
+      - 'LITELLM_LOCAL_MODEL_COST_MAP=${LITELLM_LOCAL_MODEL_COST_MAP}'
+      - 'OLLAMA_BASE_URL=${OLLAMA_BASE_URL}'
+      - 'DATABASE_URL=${DATABASE_URL}'
+      - 'CHROMA_HTTP_HOST=${CHROMA_HTTP_HOST}'
+      - 'CHROMA_HTTP_PORT=${CHROMA_HTTP_PORT}'
+      - 'WEBUI_SECRET_KEY=${WEBUI_SECRET_KEY}'
+      - 'WHISPER_MODEL_AUTO_UPDATE=${WHISPER_MODEL_AUTO_UPDATE}'      
+#      - 'AUDIO_OPENAI_API_BASE_URL=${OPENAI_API_BASE_URL}'
+#      - 'AUDIO_OPENAI_API_KEY=${OPENAI_API_KEY}'
+#      - 'AUDIO_OPENAI_API_MODEL=${AUDIO_OPENAI_API_MODEL}'
+#      - 'AUDIO_OPENAI_API_SPEAKER=${AUDIO_OPENAI_API_SPEAKER}'
+#      - 'AUTOMATIC1111_BASE_URL=${AUTOMATIC1111_BASE_URL}'
+#      - 'ENABLE_IMAGE_GENERATION=${ENABLE_IMAGE_GENERATION}'
+#      - 'ENABLE_MODEL_FILTER=${ENABLE_MODEL_FILTER}'
+#      - 'ENABLE_RAG_HYBRID_SEARCH=${ENABLE_RAG_HYBRID_SEARCH}'
+#      - 'IMAGE_GENERATION_ENGINE=${IMAGE_GENERATION_ENGINE}'
+#      - 'IMAGE_GENERATION_MODEL=${IMAGE_GENERATION_MODEL}'
+#      - 'IMAGE_SIZE=${IMAGE_SIZE}'
+#      - 'IMAGES_OPENAI_API_BASE_URL=${OPENAI_API_BASE_URL}'
+#      - 'IMAGES_OPENAI_API_KEY=${OPENAI_API_KEY}'
+#      - 'LANGFUSE_PUBLIC_KEY=${LANGFUSE_PUBLIC_KEY}'
+#      - 'LANGFUSE_SECRET_KEY=${LANGFUSE_SECRET_KEY}'
+#      - 'MODEL_FILTER_LIST=${MODEL_FILTER_LIST}'
+#      - 'OPENAI_API_BASE_URLS=${OPENAI_API_BASE_URLS}'
+#      - 'OPENAI_API_KEYS=${OPENAI_API_KEYS}'
+#      - 'RAG_EMBEDDING_MODEL=${RAG_EMBEDDING_MODEL}'
+#      - 'RAG_RERANKING_MODEL=${RAG_RERANKING_MODEL}'
+#      - 'USE_EMBEDDING_MODEL_DOCKER=${RAG_EMBEDDING_MODEL}'
+#      - 'USE_RERANKING_MODEL_DOCKER=${RAG_RERANKING_MODEL}'
+#      - 'WEBHOOK_URL=${WEBHOOK_URL}'
+
+### Postgres : SQL Database ###
+  postgres:
+    container_name: postgres
+    image: postgres
+    environment: 
+      - 'POSTGRES_PASSWORD=${POSTGRES_PASSWORD}'
+### If you need to change the port, change 5433 ###       
+    ports: 
+      - "5433:5432"
+    restart: unless-stopped
+### This is local. To switch to Docker Volume remove ./ ###
+### Your data will not copy over unless you use Docker cp commands ###      
+    volumes:
+      - ./.postgres:/var/lib/postgresql/data
+
+### Chroma : Vector Database ###
+  chromadb:
+    container_name: chromadb
+    image: chromadb/chroma
+### If you need to change the port, change the first 8000 ###     
+    ports:
+      - "8000:8000"
+    restart: unless-stopped      
+
+### GUI : PostgreSQL | MySQL and other Databases ###
+  adminer:
+    image: adminer
+    container_name: adminer 
+### If you need to change the port, change 8081 ###     
+    ports:
+      - 8081:8080
+    restart: unless-stopped      
+      
+### Volumes : These are stored locally ###
+### If changing the Volumes above to use Docker Volumes ###
+### You must remove the {} from the ones listed below ###
+
+volumes:
+  .open-webui_data: {}
+  .postgres: {}
