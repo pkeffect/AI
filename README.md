@@ -1,5 +1,7 @@
-# DOCKERIZED
+# AI RELATED THINGS
 
+
+## DOCKER STUFF
 There is no way to properly update all your images at once. Here is a command you can run from your WSL distro terminal. This will redownload (update) each image you have.       
       
       docker images |grep -v REPOSITORY|awk '{print $1}'|xargs -L1 docker pull 
