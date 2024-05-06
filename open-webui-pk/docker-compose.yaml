@@ -1,4 +1,5 @@
 ### Open-WebUI-Dev-Cuda | Postgres | ChromaDB | Adminer ###
+### This uses the development nvidia cuda build of OpenWebUI ###
 ### This file assumes that Ollama is installed locally and not in Docker ###
 ### Volumes for this file are stored locally as well ###
 ### OpenWebUI : Browser Based Model Interface ###
