@@ -1,7 +1,6 @@
 ### Open-WebUI-Dev v0.1.124 | Postgres | Adminer ###
 ### This file assumes that Ollama is installed locally and not in Docker ###
 ### Volumes for this file are stored locally also ###
-### OpenWebUI : Browser Based Model Interface ###
 services:
   open-webui-dev:
     image: ghcr.io/open-webui/open-webui:dev
