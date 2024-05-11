@@ -15,7 +15,7 @@
 ## Stable Diffusion(s)
 * Working via installs from [Stability Matrix](https://github.com/LykosAI/StabilityMatrix)
 * These are under Settings -> Images settings in [OpenWebUI](https://openwebui.com/)
-* ```http://host.docker.internal:porthere```
+* ```http://host.docker.internal:porthere``` this assumes everything is hosted on the same machine
 ### Working Engines
 ### Set as Automatic1111
 * [Auto1111](https://github.com/AUTOMATIC1111/stable-diffusion-webui) 
