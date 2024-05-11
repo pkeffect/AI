@@ -6,7 +6,7 @@
 ## Ollama
 * [Ollama](https://ollama.com/)
 * [Ollama github](https://github.com/ollama/ollama)
-* [Ollama Models](https://ollama.com/library?sort=newest) - Model Library
+* [Ollama Models](https://ollama.com/library?sort=newest)
 ## OPENWEBUI 
 * [OpenWebUI](https://openwebui.com/)
 * [OpenWebUI github](https://github.com/open-webui/open-webui)
