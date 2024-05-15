@@ -1,9 +1,11 @@
-### Open-WebUI-Dev v0.1.124 | Postgres | Adminer ###
+### Open-WebUI-Dev | Postgres | ChromaDB | Adminer ###
 ### This file assumes that Ollama is installed locally and not in Docker ###
-### Volumes for this file are stored locally also ###
+### Volumes for this file are stored locally as well ###
+### OpenWebUI : Browser Based Model Interface ###
+
 services:
-  open-webui-dev:
-    image: ghcr.io/open-webui/open-webui:dev
+  open-webui-dev-cuda:
+    image: ghcr.io/open-webui/open-webui:dev-cuda
     container_name: open-webui-dev
 ### If you need to change the port, change 3000 ###    
     ports:
@@ -11,12 +13,23 @@ services:
 ### This is local. To switch to Docker Volume remove ./. ###
 ### Your data will not copy over unless you use Docker cp commands ###      
     volumes:
-      - ./.open-webui_data:/app/backend/data
+      - ./.open-webui-data:/app/backend/data
+      - ./.open-webui-data/config.json:/app/backend/data/config.json  
+      - ./.open-webui-data/litellm/config.yaml:/app/backend/data/litellm/config.yaml       
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities:
+                - gpu      
     restart: unless-stopped
     extra_hosts:
       - "host.docker.internal:host-gateway"
     depends_on:
       - postgres
+      - chromadb
     environment:
 ### DO NOT TRACK ###
       - 'SCARF_NO_ANALYTICS=${SCARF_NO_ANALYTICS}'
@@ -99,31 +112,55 @@ services:
 #     - 'ENABLE_LITELLM=${ENABLE_LITELLM}'
 #     - 'LITELLM_PROXY_PORT=${LITELLM_PROXY_PORT}'
 #     - 'LITELLM_PROXY_HOST=${LITELLM_PROXY_HOST}'
+
+### ChromaDB ###
+  chromadb:
+    image: docker.io/chromadb/chroma:latest
+    container_name: openweb-ui-chromadb
+    env_file:
+      - .env
+    environment:
+      - ALLOW_RESET=True
+      - ANONYMIZED_TELEMETRY=False
+      - CHROMA_ROOT_PASSWORD=chroma_root_password
+      - CHROMA_DATABASE=chromadb
+    ports:
+      - "3308:3306"
+    volumes:
+      - ./.open-webui-data/.data-chroma:/chroma/chroma
+      - ./.open-webui-data/.data-chroma:/app/data      
+
 ### Postgres : SQL Database ###
   postgres:
-    container_name: postgres
-    image: postgres
+    container_name: openwebui-postgres
+    image: docker.io/postgres:latest
     environment: 
       - 'POSTGRES_PASSWORD=${POSTGRES_PASSWORD}'
 ### If you need to change the port, change 5433 ###       
     ports: 
-      - "5433:5432"
+      - "5333:5432"
     restart: unless-stopped
 ### This is local. To switch to Docker Volume remove ./. ###
 ### Your data will not copy over unless you use Docker cp commands ###      
     volumes:
-      - ./.postgres:/var/lib/postgresql/data
+      - ./.open-webui-data/.data-postgres:/var/lib/postgresql/data
+
 ### GUI : PostgreSQL | MySQL and other Databases ###
   adminer:
     image: adminer
-    container_name: adminer 
-### If you need to change the port, change 8081 ###     
+    container_name: openwebui-adminer 
+### If you need to change the port, change 8081 ###  
+    environment:
+#      - ADMINER_DEFAULT_SERVER=postgres
+      - ADMINER_DESIGN=hydra   
     ports:
-      - 8081:8080
+      - 8333:8080
     restart: unless-stopped     
+      
 ### Volumes : These are stored locally ###
 ### If changing the Volumes above to use Docker Volumes ###
 ### You must remove the {} from the ones listed below ###
 volumes:
-  .open-webui_data: {}
-  .postgres: {}
+  .open-webui-data: {}
+  .data-chroma: {}
+  .data-postgres: {}
