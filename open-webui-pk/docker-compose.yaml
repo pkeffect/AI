@@ -1,73 +1,28 @@
-### Open-WebUI-Dev-Cuda | Postgres | ChromaDB | Adminer | PgAdmin ###
-### This file assumes that Ollama is installed locally and not in Docker ###
-### Volumes for this file are stored locally as well ###
-### OpenWebUI : Browser Based Model Interface ###
+### Adminer | https://github.com/vrana/adminer ###
+### PgAdmin | https://github.com/pgadmin-org/pgadmin4 ###
 
 services:
-  openwebui-dev-cuda:
-    image: ghcr.io/open-webui/open-webui:dev-cuda
-    container_name: openwebui-dev-cuda
-    ports:
-      - "3000:8080"
-    volumes:
-      - ./.openwebui-data:/app/backend/data
-      - ./.openwebui-data/config.json:/app/backend/data/config.json  
-      - ./.openwebui-data/litellm/config.yaml:/app/backend/data/litellm/config.yaml       
-    deploy:
-      resources:
-        reservations:
-          devices:
-            - driver: nvidia
-              count: 1
-              capabilities:
-                - gpu      
-    extra_hosts:
-      - "host.docker.internal:host-gateway"
-    depends_on:
-      - postgres
-      - chromadb
+  adminer:
+    image: adminer
+    container_name: adminer 
     environment:
-      - 'SCARF_NO_ANALYTICS=${SCARF_NO_ANALYTICS}'
-      - 'DO_NOT_TRACK=${DO_NOT_TRACK}'
-      - 'ANONYMIZED_TELEMETRY=${ANONYMIZED_TELEMETRY}'
-      - 'LITELLM_LOCAL_MODEL_COST_MAP=${LITELLM_LOCAL_MODEL_COST_MAP}'
-      - 'WEBUI_SECRET_KEY=${WEBUI_SECRET_KEY}'
-      - 'DATABASE_URL=${DATABASE_URL}'
-      - 'OLLAMA_BASE_URL=${OLLAMA_BASE_URL}'
-      - 'CHROMA_HTTP_HOST=${CHROMA_HTTP_HOST}'
-    restart: unless-stopped
-    
-  chromadb:
-    image: docker.io/chromadb/chroma:latest
-    container_name: openwebui-chromadb
-    environment:
-      - 'ALLOW_RESET=${ALLOW_RESET}'
-      - 'ANONYMIZED_TELEMETRY=${ANONYMIZED_TELEMETRY}'
-      - 'CHROMA_ROOT_PASSWORD=${CHROMA_ROOT_PASSWORD}'
-      - 'CHROMA_DATABASE=${CHROMA_DATABASE}'
-      - 'CHROMA_HTTP_HOST=${CHROMA_HTTP_HOST}'
+      - 'ADMINER_DESIGN=hydra'   
     ports:
-      - "3308:3306"
-    volumes:
-      - ./.openwebui-data/.data-chroma:/chroma/chroma
-      - ./.openwebui-data/.data-chroma:/app/data      
+      - 8333:8080
+    restart: unless-stopped     
 
-  postgres:
-    container_name: openwebui-postgres
-    image: docker.io/postgres:latest
-    environment: 
-      - 'POSTGRES_PASSWORD=${POSTGRES_PASSWORD}'
-      - 'POSTGRES_PORT=${POSTGRES_PORT}'
-      - 'POSTGRES_DB=${POSTGRES_DATABASE}'
-      - 'POSTGRES_USER=${POSTGRES_USER}'
-      - 'POSTGRES_PASSWORD=${POSTGRES_PASSWORD}'
-    ports: 
-      - "5333:5432"
-    restart: unless-stopped
+  pgadmin:
+    image: dpage/pgadmin4:latest
+    container_name: pgadmin
+    environment:
+      - 'PGADMIN_DEFAULT_EMAIL=${PGADMIN_DEFAULT_EMAIL}'
+      - 'PGADMIN_DEFAULT_PASSWORD=${PGADMIN_DEFAULT_PASSWORD}'
+#     - 'PGADMIN_LISTEN_ADDRESSES=${PGADMIN_LISTEN_ADDRESSES}'
+    ports:
+      - "5555:80"
     volumes:
-      - ./.openwebui-data/.data-postgres:/var/lib/postgresql/data
+      - ./.data-pgadmin:/var/lib/postgresql/data
+      - ./.data-pgadmin:/var/lib/pgadmin
 
 volumes:
-  .openwebui-data: {}
-  .data-chroma: {}
-  .data-postgres: {}
+  .data-pgadmin: {}
