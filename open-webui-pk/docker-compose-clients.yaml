@@ -1,0 +1,28 @@
+### Adminer | PgAdmin ###
+
+services:
+  adminer:
+    image: adminer
+    container_name: adminer 
+    environment:
+#      - 'ADMINER_DEFAULT_SERVER=postgres'
+      - 'ADMINER_DESIGN=hydra'   
+    ports:
+      - 8333:8080
+    restart: unless-stopped     
+
+  pgadmin:
+    image: dpage/pgadmin4:latest
+    container_name: pgadmin
+    environment:
+      - 'PGADMIN_DEFAULT_EMAIL=${PGADMIN_DEFAULT_EMAIL}'
+      - 'PGADMIN_DEFAULT_PASSWORD=${PGADMIN_DEFAULT_PASSWORD}'
+#     - 'PGADMIN_LISTEN_ADDRESSES=${PGADMIN_LISTEN_ADDRESSES}'
+    ports:
+      - "5555:80"
+    volumes:
+      - ./.data-pgadmin:/var/lib/postgresql/data
+      - ./.data-pgadmin:/var/lib/pgadmin
+
+volumes:
+  .data-pgadmin: {}
