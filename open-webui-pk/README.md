@@ -3,8 +3,9 @@
   *  [Ollama](https://ollama.com/) is installed (locally), not in docker.
   * Volumes are stored (locally), not in docker.
   * You have a Nvidia GPU (if not remove the ```deploy``` section.
+  * You have [Nvidia Toolkit](https://developer.nvidia.com/cuda-downloads) installed.
 * This is the most efficient setup for my system.
-  * Windows 11 | Docker Desktop | WSL2 - Ubuntu 22.04
+  * Windows 11 | [Docker Desktop](https://www.docker.com/products/docker-desktop/) | [WSL2](https://learn.microsoft.com/en-us/windows/wsl/install) - [Ubuntu 22.04](https://ubuntu.com/)
   * AMD Ryzen 9 3900XT | 128GB DDR4 RAM | ASUS TUF RTX 3080 GAMING OC 10GB
   
 * Running mutiple docker-compose files at once:
