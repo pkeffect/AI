@@ -1,11 +1,11 @@
-### Adminer | PgAdmin ###
+### Adminer | https://github.com/vrana/adminer ###
+### PgAdmin | https://github.com/pgadmin-org/pgadmin4 ###
 
 services:
   adminer:
     image: adminer
     container_name: adminer 
     environment:
-#      - 'ADMINER_DEFAULT_SERVER=postgres'
       - 'ADMINER_DESIGN=hydra'   
     ports:
       - 8333:8080
