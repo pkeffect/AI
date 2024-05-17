@@ -6,7 +6,7 @@
 services:
   openwebui-dev-cuda:
     image: ghcr.io/open-webui/open-webui:dev-cuda
-    container_name: openwebui-dev
+    container_name: openwebui-dev-cuda
 ### If you need to change the port, change 3000 ###    
     ports:
       - "3000:8080"
