@@ -1,21 +1,21 @@
-### Open-WebUI-Dev | Postgres | ChromaDB | Adminer ###
+### Open-WebUI-Dev-Cuda | Postgres | ChromaDB | Adminer | PgAdmin###
 ### This file assumes that Ollama is installed locally and not in Docker ###
 ### Volumes for this file are stored locally as well ###
 ### OpenWebUI : Browser Based Model Interface ###
 
 services:
-  open-webui-dev-cuda:
+  openwebui-dev-cuda:
     image: ghcr.io/open-webui/open-webui:dev-cuda
-    container_name: open-webui-dev
+    container_name: openwebui-dev
 ### If you need to change the port, change 3000 ###    
     ports:
       - "3000:8080"
 ### This is local. To switch to Docker Volume remove ./. ###
 ### Your data will not copy over unless you use Docker cp commands ###      
     volumes:
-      - ./.open-webui-data:/app/backend/data
-      - ./.open-webui-data/config.json:/app/backend/data/config.json  
-      - ./.open-webui-data/litellm/config.yaml:/app/backend/data/litellm/config.yaml       
+      - ./.openwebui-data:/app/backend/data
+      - ./.openwebui-data/config.json:/app/backend/data/config.json  
+      - ./.openwebui-data/litellm/config.yaml:/app/backend/data/litellm/config.yaml       
     deploy:
       resources:
         reservations:
@@ -75,7 +75,7 @@ services:
 #     - 'DOCS_DIR=${DOCS_DIR}'
 #     - 'CHROMA_TENANT=${CHROMA_TENANT}'
 #     - 'CHROMA_DATABASE=${CHROMA_DATABASE}'
-#     - 'CHROMA_HTTP_HOST=${CHROMA_HTTP_HOST}'
+      - 'CHROMA_HTTP_HOST=${CHROMA_HTTP_HOST}'
 #     - 'CHROMA_HTTP_PORT=${CHROMA_HTTP_PORT}'
 #     - 'CHROMA_HTTP_HEADERS=${CHROMA_HTTP_HEADERS}'
 #     - 'CHROMA_HTTP_SSL=${CHROMA_HTTP_SSL}'
@@ -116,19 +116,18 @@ services:
 ### ChromaDB ###
   chromadb:
     image: docker.io/chromadb/chroma:latest
-    container_name: openweb-ui-chromadb
-    env_file:
-      - .env
+    container_name: openwebui-chromadb
     environment:
-      - ALLOW_RESET=True
-      - ANONYMIZED_TELEMETRY=False
-      - CHROMA_ROOT_PASSWORD=chroma_root_password
-      - CHROMA_DATABASE=chromadb
+      - 'ALLOW_RESET=${ALLOW_RESET}'
+      - 'ANONYMIZED_TELEMETRY=${ANONYMIZED_TELEMETRY}'
+      - 'CHROMA_ROOT_PASSWORD=${CHROMA_ROOT_PASSWORD}'
+      - 'CHROMA_DATABASE=${CHROMA_DATABASE}'
+      - 'CHROMA_HTTP_HOST=${CHROMA_HTTP_HOST}'
     ports:
       - "3308:3306"
     volumes:
-      - ./.open-webui-data/.data-chroma:/chroma/chroma
-      - ./.open-webui-data/.data-chroma:/app/data      
+      - ./.openwebui-data/.data-chroma:/chroma/chroma
+      - ./.openwebui-data/.data-chroma:/app/data      
 
 ### Postgres : SQL Database ###
   postgres:
@@ -136,6 +135,11 @@ services:
     image: docker.io/postgres:latest
     environment: 
       - 'POSTGRES_PASSWORD=${POSTGRES_PASSWORD}'
+      - 'POSTGRES_PORT=${POSTGRES_PORT}'
+      - 'POSTGRES_DB=${POSTGRES_DATABASE}'
+      - 'POSTGRES_USER=${POSTGRES_USER}'
+      - 'POSTGRES_PASSWORD=${POSTGRES_PASSWORD}'
+      
 ### If you need to change the port, change 5433 ###       
     ports: 
       - "5333:5432"
@@ -143,24 +147,38 @@ services:
 ### This is local. To switch to Docker Volume remove ./. ###
 ### Your data will not copy over unless you use Docker cp commands ###      
     volumes:
-      - ./.open-webui-data/.data-postgres:/var/lib/postgresql/data
+      - ./.openwebui-data/.data-postgres:/var/lib/postgresql/data
 
 ### GUI : PostgreSQL | MySQL and other Databases ###
-  adminer:
+  openwebui-adminer:
     image: adminer
     container_name: openwebui-adminer 
-### If you need to change the port, change 8081 ###  
+### If you need to change the port, change 8081 ###
     environment:
-#      - ADMINER_DEFAULT_SERVER=postgres
-      - ADMINER_DESIGN=hydra   
+#      - 'ADMINER_DEFAULT_SERVER=postgres'
+      - 'ADMINER_DESIGN=hydra'   
     ports:
       - 8333:8080
     restart: unless-stopped     
-      
+
+  pgadmin:
+    image: dpage/pgadmin4:latest
+    container_name: opwenwebui-pgadmin
+    environment:
+      - 'PGADMIN_DEFAULT_EMAIL=${PGADMIN_DEFAULT_EMAIL}'
+      - 'PGADMIN_DEFAULT_PASSWORD=${PGADMIN_DEFAULT_PASSWORD}'
+#     - 'PGADMIN_LISTEN_ADDRESSES=${PGADMIN_LISTEN_ADDRESSES}'
+    ports:
+      - "5555:80"
+    volumes:
+      - ./.openwebui-data/.data-pgadmin:/var/lib/postgresql/data
+      - ./.openwebui-data/.data-pgadmin:/var/lib/pgadmin
+
 ### Volumes : These are stored locally ###
 ### If changing the Volumes above to use Docker Volumes ###
 ### You must remove the {} from the ones listed below ###
 volumes:
-  .open-webui-data: {}
+  .openwebui-data: {}
   .data-chroma: {}
+  .data-pgadmin: {}
   .data-postgres: {}
