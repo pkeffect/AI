@@ -1,7 +1,12 @@
 # README
-* This file also assumes that [Ollama](https://ollama.com/) is installed (locally), not in docker.
-* The above docker-compose.yaml file is set to store volumes (locally), not in docker.
-* This is the most efficient setup for my system. Yours may vary.
+* The docker-compose.yaml listed above assumes the following:
+  *  [Ollama](https://ollama.com/) is installed (locally), not in docker.
+  * Volumes are stored (locally), not in docker.
+  * You have a Nvidia GPU (if not remove the ```deploy``` section.
+* This is the most efficient setup for my system.
+  * Windows 11 | Docker Desktop | WSL2 - Ubuntu 22.04
+  * AMD Ryzen 9 3900XT | 128GB DDR4 RAM | ASUS TUF RTX 3080 GAMING OC 10GB
+  
 * Running mutiple docker-compose files at once:
 
 ```docker compose -f docker-compose.yaml -f clients-compose-clients.yaml up -d --build```
