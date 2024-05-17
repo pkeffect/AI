@@ -1,6 +1,6 @@
-### Open-WebUI-Dev-Cuda | https://github.com/open-webui/open-webui ###
-### Postgres | https://www.postgresql.org/ ###
-### ChromaDB | https://docs.trychroma.com/ ###
+### Open-WebUI-Dev-Cuda | https://github.com/open-webui/open-webui
+### Postgres | https://www.postgresql.org/
+### ChromaDB | https://docs.trychroma.com/
 
 services:
   openwebui-dev-cuda:
