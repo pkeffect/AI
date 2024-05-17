@@ -4,6 +4,7 @@
 * This is the most efficient setup for my system. Yours may vary.
 
 *Running mutiple docker-compose files at once:
+
 ```docker compose -f docker-compose.yaml -f clients-compose-clients.yaml up -d --build```
 
 ## Ollama
