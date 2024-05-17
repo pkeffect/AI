@@ -3,6 +3,9 @@
 * The above docker-compose.yaml file is set to store volumes (locally), not in docker.
 * This is the most efficient setup for my system. Yours may vary.
 
+*Running mutiple docker-compose files at once:
+```docker compose -f docker-compose.yaml -f clients-compose-clients.yaml up -d --build```
+
 ## Ollama
 * [Ollama](https://ollama.com/)
 * [Ollama github](https://github.com/ollama/ollama)
