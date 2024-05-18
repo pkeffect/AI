@@ -49,7 +49,8 @@ services:
       - "3308:3306"
     volumes:
       - ./.openwebui-data/.data-chroma:/chroma/chroma
-      - ./.openwebui-data/.data-chroma:/app/data      
+      - ./.openwebui-data/.data-chroma:/app/data
+    restart: unless-stopped      
 
   postgres:
     container_name: openwebui-postgres
@@ -62,10 +63,10 @@ services:
       - 'POSTGRES_PASSWORD=${POSTGRES_PASSWORD}'
     ports: 
       - "5333:5432"
-    restart: unless-stopped
     volumes:
       - ./.openwebui-data/.data-postgres:/var/lib/postgresql/data
-
+    restart: unless-stopped
+    
 volumes:
   .openwebui-data: {}
   .data-chroma: {}
