@@ -5,7 +5,7 @@
 services:
   openwebui-dev:
     image: ghcr.io/open-webui/open-webui:dev
-    container_name: openwebui-dev-cuda
+    container_name: openwebui-dev
     ports:
       - "3000:8080"
     volumes:
