@@ -23,7 +23,4 @@ services:
     volumes:
       - ./.data-pgadmin:/var/lib/postgresql/data
       - ./.data-pgadmin:/var/lib/pgadmin
-    restart: unless-stopped 
-    
-volumes:
-  .data-pgadmin: {}
+    restart: unless-stopped
