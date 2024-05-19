@@ -8,7 +8,7 @@
   
 * Running mutiple docker-compose files at once:
 
-```docker compose -f docker-compose.yaml -f clients-compose-clients.yaml up -d --build```
+```docker compose -f docker-compose.yaml -f docker-compose-clients.yaml up -d --build```
 
 ## Ollama
 * [Ollama](https://ollama.com/)
