@@ -1,25 +1,18 @@
-### Open-WebUI-Dev-Cuda | https://github.com/open-webui/open-webui
+### Open-WebUI-Dev | https://github.com/open-webui/open-webui
 ### Postgres | https://www.postgresql.org/
 ### ChromaDB | https://docs.trychroma.com/
 
 services:
-  openwebui-dev-cuda:
-    image: ghcr.io/open-webui/open-webui:dev-cuda
+  openwebui-dev:
+    image: ghcr.io/open-webui/open-webui:dev
     container_name: openwebui-dev-cuda
     ports:
       - "3000:8080"
     volumes:
       - ./.openwebui-data:/app/backend/data
+#     - /path/to/your/docs:/app/backend/data/docs 
       - ./.openwebui-data/config.json:/app/backend/data/config.json  
       - ./.openwebui-data/litellm/config.yaml:/app/backend/data/litellm/config.yaml       
-    deploy:
-      resources:
-        reservations:
-          devices:
-            - driver: nvidia
-              count: 1
-              capabilities:
-                - gpu      
     extra_hosts:
       - "host.docker.internal:host-gateway"
     depends_on:
@@ -66,8 +59,3 @@ services:
     volumes:
       - ./.openwebui-data/.data-postgres:/var/lib/postgresql/data
     restart: unless-stopped
-    
-volumes:
-  .openwebui-data: {}
-  .data-chroma: {}
-  .data-postgres: {}
