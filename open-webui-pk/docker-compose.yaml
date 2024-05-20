@@ -31,7 +31,7 @@ services:
     
   chromadb:
     image: docker.io/chromadb/chroma:latest
-    container_name: openwebui-chromadb
+    container_name: open-webui-chromadb
     environment:
       - 'ALLOW_RESET=${ALLOW_RESET}'
       - 'ANONYMIZED_TELEMETRY=${ANONYMIZED_TELEMETRY}'
@@ -46,7 +46,7 @@ services:
     restart: unless-stopped      
 
   postgres:
-    container_name: openwebui-postgres
+    container_name: open-webui-postgres
     image: docker.io/postgres:latest
     environment: 
       - 'POSTGRES_PASSWORD=${POSTGRES_PASSWORD}'
