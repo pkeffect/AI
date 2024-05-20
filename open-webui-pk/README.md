@@ -1,5 +1,5 @@
 # README
-![alt text](https://github.com/pkeffect/AI/blob/main/images/llm.app.learning.curve.png "llm app learning curve")
+![alt text](https://github.com/pkeffect/AI/blob/main/images/llm.app.learning.curve.small.png "llm app learning curve")
 * The docker-compose.yaml listed above assumes the following:
   *  [Ollama](https://ollama.com/) is installed locally, not in docker.
   * Volumes are stored locally, not in docker.
