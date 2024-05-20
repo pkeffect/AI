@@ -3,9 +3,9 @@
 ### ChromaDB | https://docs.trychroma.com/
 
 services:
-  open-webui-dev:
-    image: ghcr.io/open-webui/open-webui:dev
-    container_name: open-webui-dev
+  open-webui:
+    image: ghcr.io/open-webui/open-webui:main
+    container_name: open-webui
     ports:
       - "3000:8080"
     volumes:
