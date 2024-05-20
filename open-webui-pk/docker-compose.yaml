@@ -3,16 +3,16 @@
 ### ChromaDB | https://docs.trychroma.com/
 
 services:
-  openwebui-dev:
+  open-webui-dev:
     image: ghcr.io/open-webui/open-webui:dev
-    container_name: openwebui-dev
+    container_name: open-webui-dev
     ports:
       - "3000:8080"
     volumes:
-      - ./.openwebui-data:/app/backend/data
+      - ./.open-webui-data:/app/backend/data
 #     - /path/to/your/docs:/app/backend/data/docs 
-      - ./.openwebui-data/config.json:/app/backend/data/config.json  
-      - ./.openwebui-data/litellm/config.yaml:/app/backend/data/litellm/config.yaml       
+      - ./.open-webui-data/config.json:/app/backend/data/config.json  
+      - ./.open-webui-data/litellm/config.yaml:/app/backend/data/litellm/config.yaml       
     extra_hosts:
       - "host.docker.internal:host-gateway"
     depends_on:
@@ -41,8 +41,8 @@ services:
     ports:
       - "3308:3306"
     volumes:
-      - ./.openwebui-data/.data-chroma:/chroma/chroma
-      - ./.openwebui-data/.data-chroma:/app/data
+      - ./.open-webui-data/.data-chroma:/chroma/chroma
+      - ./.open-webui-data/.data-chroma:/app/data
     restart: unless-stopped      
 
   postgres:
@@ -57,5 +57,5 @@ services:
     ports: 
       - "5333:5432"
     volumes:
-      - ./.openwebui-data/.data-postgres:/var/lib/postgresql/data
+      - ./.open-webui-data/.data-postgres:/var/lib/postgresql/data
     restart: unless-stopped
