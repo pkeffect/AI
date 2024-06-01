@@ -2,6 +2,8 @@
 # Postgres | https://www.postgresql.org/
 # ChromaDB | https://docs.trychroma.com/
 # Searxng | https://github.com/searxng/searxng
+# Adminer | https://github.com/vrana/adminer
+# PgAdmin | https://github.com/pgadmin-org/pgadmin4
 # Watchtower | https://containrrr.dev/watchtower/
 
 services:
@@ -94,5 +96,7 @@ services:
     ports:
       - "8787:8080"
     volumes:
-      - ./.searxng-data:/etc/searxng
-    restart: always
+      - ./open-webui-data/.searxng-data:/etc/searxng
+    restart: always  
+
+ 
