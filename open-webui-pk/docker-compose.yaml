@@ -1,18 +1,26 @@
-### Open-WebUI-Dev | https://github.com/open-webui/open-webui
+### Open-WebUI-Dev-Cuda | https://github.com/open-webui/open-webui
 ### Postgres | https://www.postgresql.org/
 ### ChromaDB | https://docs.trychroma.com/
+### Searxng | https://github.com/searxng/searxng
 
 services:
-  open-webui:
-    image: ghcr.io/open-webui/open-webui:main
-    container_name: open-webui
+  open-webui-dev-cuda:
+    image: ghcr.io/open-webui/open-webui:dev-cuda
+    container_name: open-webui-dev-cuda
     ports:
       - "3000:8080"
     volumes:
       - ./.open-webui-data:/app/backend/data
-#     - /path/to/your/docs:/app/backend/data/docs 
       - ./.open-webui-data/config.json:/app/backend/data/config.json  
       - ./.open-webui-data/litellm/config.yaml:/app/backend/data/litellm/config.yaml       
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities:
+                - gpu      
     extra_hosts:
       - "host.docker.internal:host-gateway"
     depends_on:
@@ -27,7 +35,12 @@ services:
       - 'DATABASE_URL=${DATABASE_URL}'
       - 'OLLAMA_BASE_URL=${OLLAMA_BASE_URL}'
       - 'CHROMA_HTTP_HOST=${CHROMA_HTTP_HOST}'
-    restart: unless-stopped
+      - 'RAG_EMBEDDING_MODEL_AUTO_UPDATE=${RAG_EMBEDDING_MODEL_AUTO_UPDATE}'
+      - 'RAG_WEB_SEARCH_RESULT_COUNT=${RAG_WEB_SEARCH_RESULT_COUNT}'
+      - 'RAG_WEB_SEARCH_CONCURRENT_REQUESTS=${RAG_WEB_SEARCH_CONCURRENT_REQUESTS}'
+      - 'SEARXNG_QUERY_URL=${SEARXNG_QUERY_URL}'
+      - 'USE_CUDA_DOCKER=${USE_CUDA_DOCKER}'
+    restart: always
     
   chromadb:
     image: docker.io/chromadb/chroma:latest
@@ -43,7 +56,7 @@ services:
     volumes:
       - ./.open-webui-data/.data-chroma:/chroma/chroma
       - ./.open-webui-data/.data-chroma:/app/data
-    restart: unless-stopped      
+    restart: always   
 
   postgres:
     container_name: open-webui-postgres
@@ -59,3 +72,13 @@ services:
     volumes:
       - ./.open-webui-data/.data-postgres:/var/lib/postgresql/data
     restart: unless-stopped
+
+  searxng:
+    image: searxng/searxng:latest
+    container_name: open-webui-searxng
+    ports:
+      - "8787:8080"
+    volumes:
+      - ./searxng:/etc/searxng
+    restart: always  
+  
