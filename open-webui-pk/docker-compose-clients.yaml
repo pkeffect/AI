@@ -4,23 +4,27 @@
 services:
   adminer:
     image: adminer
-    container_name: adminer 
+    container_name: open-webui-adminer 
     environment:
       - 'ADMINER_DESIGN=hydra'   
     ports:
       - 8333:8080
+    depends_on:
+      - chromadb      
     restart: unless-stopped     
 
   pgadmin:
     image: dpage/pgadmin4:latest
-    container_name: pgadmin
+    container_name: open-webui-pgadmin
     environment:
       - 'PGADMIN_DEFAULT_EMAIL=${PGADMIN_DEFAULT_EMAIL}'
       - 'PGADMIN_DEFAULT_PASSWORD=${PGADMIN_DEFAULT_PASSWORD}'
 #     - 'PGADMIN_LISTEN_ADDRESSES=${PGADMIN_LISTEN_ADDRESSES}'
     ports:
       - "5555:80"
+    depends_on:
+      - postgres      
     volumes:
-      - ./.data-pgadmin:/var/lib/postgresql/data
-      - ./.data-pgadmin:/var/lib/pgadmin
-    restart: unless-stopped
+      - ./.open-webui-data/.data-pgadmin:/var/lib/postgresql/data
+      - ./.open-webui-data/.data-pgadmin:/var/lib/pgadmin
+    restart: unless-stopped 
