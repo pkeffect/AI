@@ -2,9 +2,8 @@
 # Postgres | https://www.postgresql.org/
 # ChromaDB | https://docs.trychroma.com/
 # Searxng | https://github.com/searxng/searxng
-# Adminer | https://github.com/vrana/adminer
-# PgAdmin | https://github.com/pgadmin-org/pgadmin4
 # Watchtower | https://containrrr.dev/watchtower/
+# Pipelines | https://github.com/open-webui/pipelines
 
 services:
   watchtower:
@@ -71,8 +70,8 @@ services:
     ports:
       - "3308:3306"
     volumes:
-      - ./.open-webui-data/.data-chroma:/chroma/chroma
-      - ./.open-webui-data/.data-chroma:/app/data
+      - ./.data-chroma:/chroma/chroma
+      - ./.data-chroma:/app/data
     restart: always   
 
   postgres:
@@ -87,16 +86,30 @@ services:
     ports: 
       - "5333:5432"
     volumes:
-      - ./.open-webui-data/.data-postgres:/var/lib/postgresql/data
+      - ./.data-postgres:/var/lib/postgresql/data
     restart: unless-stopped
 
   searxng:
     image: searxng/searxng:latest
     container_name: open-webui-searxng
     ports:
-      - "8787:8080"
+      - "4000:8080"
     volumes:
-      - ./open-webui-data/.searxng-data:/etc/searxng
+      - ./.searxng-data:/etc/searxng
+      - ./searxng:/etc/searxng:rw
+    depends_on:
+      - open-webui-dev-cuda       
     restart: always  
 
- 
+  pipelines:
+    image: ghcr.io/open-webui/pipelines:main 
+    container_name: open-webui-pipelines
+    ports:
+      - "9099:9099"
+    extra_hosts:
+      - "host.docker.internal:host-gateway"      
+    volumes:
+      - ./.pipelines:/app/pipelines
+    depends_on:
+      - open-webui-dev-cuda    
+    restart: always
