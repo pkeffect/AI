@@ -1,9 +1,26 @@
-### Open-WebUI-Dev-Cuda | https://github.com/open-webui/open-webui
-### Postgres | https://www.postgresql.org/
-### ChromaDB | https://docs.trychroma.com/
-### Searxng | https://github.com/searxng/searxng
+# Open-WebUI-Dev-Cuda | https://github.com/open-webui/open-webui
+# Postgres | https://www.postgresql.org/
+# ChromaDB | https://docs.trychroma.com/
+# Searxng | https://github.com/searxng/searxng
+# Adminer | https://github.com/vrana/adminer
+# PgAdmin | https://github.com/pgadmin-org/pgadmin4
+# Watchtower | https://containrrr.dev/watchtower/
 
 services:
+  watchtower:
+    image: containrrr/watchtower
+    container_name: open-webui-watchtower
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    environment:
+      WATCHTOWER_POLL_INTERVAL: 600
+      WATCHTOWER_CLEANUP: true
+      WATCHTOWER_REMOVE_VOLUMES: true
+    command: open-webui-dev-cuda
+    restart: always
+    
   open-webui-dev-cuda:
     image: ghcr.io/open-webui/open-webui:dev-cuda
     container_name: open-webui-dev-cuda
@@ -79,6 +96,32 @@ services:
     ports:
       - "8787:8080"
     volumes:
-      - ./searxng:/etc/searxng
+      - ./.searxng-data:/etc/searxng
     restart: always  
-  
+
+  adminer:
+    image: adminer
+    container_name: open-webui-adminer 
+    environment:
+      - 'ADMINER_DESIGN=hydra'   
+    ports:
+      - 8333:8080
+    depends_on:
+      - chromadb      
+    restart: unless-stopped     
+
+  pgadmin:
+    image: dpage/pgadmin4:latest
+    container_name: open-webui-pgadmin
+    environment:
+      - 'PGADMIN_DEFAULT_EMAIL=${PGADMIN_DEFAULT_EMAIL}'
+      - 'PGADMIN_DEFAULT_PASSWORD=${PGADMIN_DEFAULT_PASSWORD}'
+#     - 'PGADMIN_LISTEN_ADDRESSES=${PGADMIN_LISTEN_ADDRESSES}'
+    ports:
+      - "5555:80"
+    depends_on:
+      - postgres      
+    volumes:
+      - ./.open-webui-data/.data-pgadmin:/var/lib/postgresql/data
+      - ./.open-webui-data/.data-pgadmin:/var/lib/pgadmin
+    restart: unless-stopped  
