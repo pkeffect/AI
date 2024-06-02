@@ -26,7 +26,6 @@ services:
     ports:
       - "3000:8080"
     volumes:
-#      - open-webui:/app/backend/data
       - ./.data-open-webui:/app/backend/data
       - ./.data-open-webui/config.json:/app/backend/data/config.json  
       - ./.data-open-webui/litellm/config.yaml:/app/backend/data/litellm/config.yaml       
