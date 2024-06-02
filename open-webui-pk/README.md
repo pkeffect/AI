@@ -12,8 +12,9 @@
 * [Ollama github](https://github.com/ollama/ollama)
 * [Ollama Models](https://ollama.com/library?sort=newest)
 ## OpenWebUI 
-* [OpenWebUI](https://openwebui.com/)
-* [OpenWebUI github](https://github.com/open-webui/open-webui)
+* [Open-WebUI](https://openwebui.com/)
+* [Open-WebUI github](https://github.com/open-webui/open-webui)
+* [Open-WebUI Pipelines](https://github.com/open-webui/pipelines?tab=readme-ov-file)
 ## Huggingface
 * [Huggingface](https://huggingface.co/)
 ## Stable Diffusion(s)
