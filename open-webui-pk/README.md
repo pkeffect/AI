@@ -19,20 +19,12 @@
 ## Stable Diffusion(s)
 * Working via installs from [Stability Matrix](https://github.com/LykosAI/StabilityMatrix)
 * These are under Settings -> Images settings in [OpenWebUI](https://openwebui.com/)
-* ```http://host.docker.internal:porthere``` this assumes everything is hosted on the same machine
+* ```http://host.docker.internal:porthere``` This assumes everything is hosted on the same machine
+* ie: ```http://host.docker.internal:7860```
 ### Working Engines
 ### Set as Automatic1111
-* [Auto1111](https://github.com/AUTOMATIC1111/stable-diffusion-webui) 
-* [Forge](https://github.com/lllyasviel/stable-diffusion-webui-forge)
-* [SD.Next.Web UI](https://github.com/vladmandic/automatic)
-* [Web UI-UX](https://github.com/anapnoe/stable-diffusion-webui-ux)
+[Auto1111](https://github.com/AUTOMATIC1111/stable-diffusion-webui) | [Forge](https://github.com/lllyasviel/stable-diffusion-webui-forge) | [SD.Next.Web UI](https://github.com/vladmandic/automatic) | [Web UI-UX](https://github.com/anapnoe/stable-diffusion-webui-ux)
 ### Set as ComfyUI
-* [ComfyUI](https://github.com/comfyanonymous/ComfyUI)
-* [StableSwarmUI](https://github.com/Stability-AI/StableSwarmUI)
-### Not working ... (yet?)
-* [Fooocus](https://github.com/lllyasviel/Fooocus)
-* [Fooocus-ControlNet](https://github.com/fenneishi/Fooocus-ControlNet-SDXL)
-* [Fooocus-MRE](https://github.com/MoonRide303/Fooocus-MRE)
-* [InvokeAI](https://github.com/invoke-ai)
-* [RuinedFooocus](https://github.com/runew0lf/RuinedFooocus)
-* [VoltaML](https://github.com/VoltaML/voltaML-fast-stable-diffusion)
+[ComfyUI](https://github.com/comfyanonymous/ComfyUI) | [StableSwarmUI](https://github.com/Stability-AI/StableSwarmUI)
+### Not working ... (yet?) 
+[Fooocus](https://github.com/lllyasviel/Fooocus) | [Fooocus-ControlNet](https://github.com/fenneishi/Fooocus-ControlNet-SDXL) | [Fooocus-MRE](https://github.com/MoonRide303/Fooocus-MRE) | [InvokeAI](https://github.com/invoke-ai) | [RuinedFooocus](https://github.com/runew0lf/RuinedFooocus) | [VoltaML](https://github.com/VoltaML/voltaML-fast-stable-diffusion)
