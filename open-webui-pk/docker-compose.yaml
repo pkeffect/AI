@@ -26,9 +26,10 @@ services:
     ports:
       - "3000:8080"
     volumes:
-      - ./.open-webui-data:/app/backend/data
-      - ./.open-webui-data/config.json:/app/backend/data/config.json  
-      - ./.open-webui-data/litellm/config.yaml:/app/backend/data/litellm/config.yaml       
+#      - open-webui:/app/backend/data
+      - ./.data-open-webui:/app/backend/data
+      - ./.data-open-webui/config.json:/app/backend/data/config.json  
+      - ./.data-open-webui/litellm/config.yaml:/app/backend/data/litellm/config.yaml       
     deploy:
       resources:
         reservations:
@@ -47,14 +48,13 @@ services:
       - 'DO_NOT_TRACK=${DO_NOT_TRACK}'
       - 'ANONYMIZED_TELEMETRY=${ANONYMIZED_TELEMETRY}'
       - 'LITELLM_LOCAL_MODEL_COST_MAP=${LITELLM_LOCAL_MODEL_COST_MAP}'
+      - 'WHISPER_MODEL_AUTO_UPDATE=${WHISPER_MODEL_AUTO_UPDATE}'
+      - 'RAG_EMBEDDING_MODEL_AUTO_UPDATE=${RAG_EMBEDDING_MODEL_AUTO_UPDATE}'
+      - 'HF_ENDPOINT=${HF_ENDPOINT}'
       - 'WEBUI_SECRET_KEY=${WEBUI_SECRET_KEY}'
       - 'DATABASE_URL=${DATABASE_URL}'
       - 'OLLAMA_BASE_URL=${OLLAMA_BASE_URL}'
       - 'CHROMA_HTTP_HOST=${CHROMA_HTTP_HOST}'
-      - 'RAG_EMBEDDING_MODEL_AUTO_UPDATE=${RAG_EMBEDDING_MODEL_AUTO_UPDATE}'
-      - 'RAG_WEB_SEARCH_RESULT_COUNT=${RAG_WEB_SEARCH_RESULT_COUNT}'
-      - 'RAG_WEB_SEARCH_CONCURRENT_REQUESTS=${RAG_WEB_SEARCH_CONCURRENT_REQUESTS}'
-      - 'SEARXNG_QUERY_URL=${SEARXNG_QUERY_URL}'
       - 'USE_CUDA_DOCKER=${USE_CUDA_DOCKER}'
     restart: always
     
@@ -95,8 +95,7 @@ services:
     ports:
       - "4000:8080"
     volumes:
-      - ./.searxng-data:/etc/searxng
-      - ./searxng:/etc/searxng:rw
+      - ./.data-searxng:/etc/searxng:rw
     depends_on:
       - open-webui-dev-cuda       
     restart: always  
@@ -109,7 +108,7 @@ services:
     extra_hosts:
       - "host.docker.internal:host-gateway"      
     volumes:
-      - ./.pipelines:/app/pipelines
+      - ./.data-pipelines:/app/pipelines
     depends_on:
       - open-webui-dev-cuda    
     restart: always
