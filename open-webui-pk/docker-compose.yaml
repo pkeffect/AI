@@ -94,6 +94,8 @@ services:
     container_name: open-webui-searxng
     ports:
       - "4000:8080"
+    extra_hosts:
+      - "host.docker.internal:host-gateway"      
     volumes:
       - ./.data-searxng:/etc/searxng:rw
     depends_on:
