@@ -7,10 +7,6 @@
   * Windows 11 | [Docker Desktop](https://www.docker.com/products/docker-desktop/) | [WSL2](https://learn.microsoft.com/en-us/windows/wsl/install) - [Ubuntu 22.04](https://ubuntu.com/)
   * AMD Ryzen 9 3900XT | 128GB DDR4 RAM | ASUS TUF RTX 3080 GAMING OC 10GB
   
-* Running mutiple docker-compose files at once:
-
-```docker compose -f docker-compose.yaml -f docker-compose-clients.yaml up -d --build```
-
 ## Ollama
 * [Ollama](https://ollama.com/)
 * [Ollama github](https://github.com/ollama/ollama)
