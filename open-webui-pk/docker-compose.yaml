@@ -82,7 +82,6 @@ services:
       - 'POSTGRES_PORT=${POSTGRES_PORT}'
       - 'POSTGRES_DB=${POSTGRES_DATABASE}'
       - 'POSTGRES_USER=${POSTGRES_USER}'
-      - 'POSTGRES_PASSWORD=${POSTGRES_PASSWORD}'
     ports: 
       - "5333:5432"
     volumes:
