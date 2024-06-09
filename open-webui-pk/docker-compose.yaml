@@ -1,5 +1,4 @@
 # Open-WebUI-Dev-Cuda | https://github.com/open-webui/open-webui
-# This is for the DEVELOPMENT branch !
 # Postgres | https://www.postgresql.org/
 # ChromaDB | https://docs.trychroma.com/
 # Searxng | https://github.com/searxng/searxng
@@ -39,7 +38,7 @@ services:
               capabilities:
                 - gpu      
     extra_hosts:
-      - "host.docker.internal:host-gateway"
+      - "host.docker.internal:host-gateway"     
     depends_on:
       - postgres
       - chromadb
@@ -92,9 +91,7 @@ services:
     image: searxng/searxng:latest
     container_name: open-webui-searxng
     ports:
-      - "4000:8080"
-    extra_hosts:
-      - "host.docker.internal:host-gateway"      
+      - "4000:8080"      
     volumes:
       - ./.data-searxng:/etc/searxng:rw
     depends_on:
@@ -106,10 +103,13 @@ services:
     container_name: open-webui-pipelines
     ports:
       - "9099:9099"
-    extra_hosts:
-      - "host.docker.internal:host-gateway"      
+#    environment:
+#      ANTHROPIC_API_KEY: "${ANTHROPIC_API_KEY}"
+#      COHERE_API_KEY: "${COHERE_API_KEY}"
+#      GOOGLE_API_KEY: "${GOOGLE_API_KEY}"
+#      PIPELINES_URLS: "${PIPELINES_URLS}"
     volumes:
       - ./.data-pipelines:/app/pipelines
     depends_on:
       - open-webui-dev-cuda    
-    restart: always
+    restart: always    
