@@ -1,6 +1,4 @@
 # Open-WebUI-Dev-Cuda | https://github.com/open-webui/open-webui
-# Postgres | https://www.postgresql.org/
-# ChromaDB | https://docs.trychroma.com/
 # Searxng | https://github.com/searxng/searxng
 # Watchtower | https://containrrr.dev/watchtower/
 # Pipelines | https://github.com/open-webui/pipelines
@@ -19,7 +17,9 @@ services:
       WATCHTOWER_REMOVE_VOLUMES: true
     command: open-webui-dev-cuda
     restart: always
-    
+    networks:
+      - "hyperspace"
+      
   open-webui-dev-cuda:
     image: ghcr.io/open-webui/open-webui:dev-cuda
     container_name: open-webui-dev-cuda
@@ -28,7 +28,6 @@ services:
     volumes:
       - ./.data-open-webui:/app/backend/data
       - ./.data-open-webui/config.json:/app/backend/data/config.json  
-      - ./.data-open-webui/litellm/config.yaml:/app/backend/data/litellm/config.yaml       
     deploy:
       resources:
         reservations:
@@ -39,53 +38,16 @@ services:
                 - gpu      
     extra_hosts:
       - "host.docker.internal:host-gateway"     
-    depends_on:
-      - postgres
-      - chromadb
     environment:
       - 'SCARF_NO_ANALYTICS=${SCARF_NO_ANALYTICS}'
       - 'DO_NOT_TRACK=${DO_NOT_TRACK}'
       - 'ANONYMIZED_TELEMETRY=${ANONYMIZED_TELEMETRY}'
-      - 'LITELLM_LOCAL_MODEL_COST_MAP=${LITELLM_LOCAL_MODEL_COST_MAP}'
-      - 'WHISPER_MODEL_AUTO_UPDATE=${WHISPER_MODEL_AUTO_UPDATE}'
-      - 'RAG_EMBEDDING_MODEL_AUTO_UPDATE=${RAG_EMBEDDING_MODEL_AUTO_UPDATE}'
-      - 'HF_ENDPOINT=${HF_ENDPOINT}'
-      - 'WEBUI_SECRET_KEY=${WEBUI_SECRET_KEY}'
-      - 'DATABASE_URL=${DATABASE_URL}'
       - 'OLLAMA_BASE_URL=${OLLAMA_BASE_URL}'
-      - 'CHROMA_HTTP_HOST=${CHROMA_HTTP_HOST}'
+      - 'WEBUI_SECRET_KEY=${WEBUI_SECRET_KEY}'
       - 'USE_CUDA_DOCKER=${USE_CUDA_DOCKER}'
     restart: always
-    
-  chromadb:
-    image: docker.io/chromadb/chroma:latest
-    container_name: open-webui-chromadb
-    environment:
-      - 'ALLOW_RESET=${ALLOW_RESET}'
-      - 'ANONYMIZED_TELEMETRY=${ANONYMIZED_TELEMETRY}'
-      - 'CHROMA_ROOT_PASSWORD=${CHROMA_ROOT_PASSWORD}'
-      - 'CHROMA_DATABASE=${CHROMA_DATABASE}'
-      - 'CHROMA_HTTP_HOST=${CHROMA_HTTP_HOST}'
-    ports:
-      - "3308:3306"
-    volumes:
-      - ./.data-chroma:/chroma/chroma
-      - ./.data-chroma:/app/data
-    restart: always   
-
-  postgres:
-    container_name: open-webui-postgres
-    image: docker.io/postgres:latest
-    environment: 
-      - 'POSTGRES_PASSWORD=${POSTGRES_PASSWORD}'
-      - 'POSTGRES_PORT=${POSTGRES_PORT}'
-      - 'POSTGRES_DB=${POSTGRES_DATABASE}'
-      - 'POSTGRES_USER=${POSTGRES_USER}'
-    ports: 
-      - "5333:5432"
-    volumes:
-      - ./.data-postgres:/var/lib/postgresql/data
-    restart: unless-stopped
+    networks:
+      - "hyperspace"
 
   searxng:
     image: searxng/searxng:latest
@@ -97,7 +59,9 @@ services:
     depends_on:
       - open-webui-dev-cuda       
     restart: always  
-
+    networks:
+      - "hyperspace"
+      
   pipelines:
     image: ghcr.io/open-webui/pipelines:main 
     container_name: open-webui-pipelines
@@ -112,4 +76,10 @@ services:
       - ./.data-pipelines:/app/pipelines
     depends_on:
       - open-webui-dev-cuda    
-    restart: always    
+    restart: always
+    networks:
+      - "hyperspace"
+      
+networks:
+  hyperspace:
+    external: true
