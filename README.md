@@ -8,7 +8,6 @@
 - SDXL Model: Juggernaut XL
 - NSFW Model: 
 
-
 ## ComyfUI: 
 - https://www.comfy.org/
 - https://github.com/comfyanonymous/ComfyUI
