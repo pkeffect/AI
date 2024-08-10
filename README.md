@@ -1,22 +1,25 @@
 # AI RELATED THINGS
 
+## Stable Diffusion Models
+- Overall Model: SDXL, Flux
+- Realistic Model: Realistic Vision
+- Fantasy Model: DreamShaper
+- Anime Model: Anything v5
+- SDXL Model: Juggernaut XL
+- NSFW Model: 
 
-## DOCKER STUFF
-There is no way to properly update all your images at once. Here is a command you can run from your WSL distro terminal. This will redownload (update) each image you have.       
-      
-      docker images |grep -v REPOSITORY|awk '{print $1}'|xargs -L1 docker pull 
 
-This process ensures that unused sectors are identified and allows Hyper-V to shrink the VHDX file further.
-      
-      docker run --rm --privileged --pid=host docker/desktop-reclaim-space
+## ComyfUI: 
+- https://www.comfy.org/
+- https://github.com/comfyanonymous/ComfyUI
+- https://github.com/ltdrdata/ComfyUI-Manager
+- https://comfyanonymous.github.io/ComfyUI_examples/
+- https://replicate.com/fofr/any-comfyui-workflow
+- https://civitai.com/search/models?sortBy=models_v9&query=comfyui
 
-You must shutdown WSL before running this next command.
-     
-     wsl --shutdown
-This command must be run from Powershell.
-    
-     Optimize-VHD -Path ${env:LOCALAPPDATA}\Docker\wsl\data\ext4.vhdx -Mode Full
-
-Then to restart WSL:
-     
-     wsl
+## Flux for ComfyUI:
+- https://blackforestlabs.ai/announcing-black-forest-labs/?ref=blog.fal.ai
+- https://github.com/black-forest-labs/flux
+- https://comfyanonymous.github.io/ComfyUI_examples/flux/
+- https://huggingface.co/spaces/gokaygokay/FLUX-Prompt-Generator
+- https://civitai.com/search/models?sortBy=models_v9&query=flux
