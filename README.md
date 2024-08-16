@@ -1,12 +1,12 @@
 # AI RELATED THINGS
 
-## Stable Diffusion Models
-- Overall Model: SDXL, Flux
+## Stable Diffusion Models (my choices)
+- Overall Model: Flux
 - Realistic Model: Realistic Vision
 - Fantasy Model: DreamShaper
 - Anime Model: Anything v5
 - SDXL Model: Juggernaut XL
-- NSFW Model: 
+- NSFW Model: (???)
 
 ## ComyfUI: 
 - https://www.comfy.org/
