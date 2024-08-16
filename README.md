@@ -15,7 +15,7 @@
 - https://comfyanonymous.github.io/ComfyUI_examples/
 - https://replicate.com/fofr/any-comfyui-workflow
 - https://civitai.com/search/models?sortBy=models_v9&query=comfyui
-- https://enragedantelope.github.io/Styles-FluxDev/
+
 
 ## Flux for ComfyUI:
 - https://blackforestlabs.ai/announcing-black-forest-labs/?ref=blog.fal.ai
@@ -23,3 +23,5 @@
 - https://comfyanonymous.github.io/ComfyUI_examples/flux/
 - https://huggingface.co/spaces/gokaygokay/FLUX-Prompt-Generator
 - https://civitai.com/search/models?sortBy=models_v9&query=flux
+- https://github.com/XLabs-AI/x-flux
+- https://enragedantelope.github.io/Styles-FluxDev/
