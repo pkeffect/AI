@@ -14,6 +14,7 @@
 - https://github.com/ltdrdata/ComfyUI-Manager
 - https://comfyanonymous.github.io/ComfyUI_examples/
 - https://replicate.com/fofr/any-comfyui-workflow
+- https://openart.ai/workflows/home
 - https://civitai.com/search/models?sortBy=models_v9&query=comfyui
 
 
