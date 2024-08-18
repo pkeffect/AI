@@ -4,7 +4,7 @@
 - [Stability Matrix](https://lykos.ai/) - This will handle most installations of the major UIs and a couple trainers.
 - [Stability Matrix Github](https://github.com/LykosAI/StabilityMatrix) - It is also multi-platform.
 
-## Generation Models
+## GENERATION MODELS
 - Overall Model: [Flux](https://huggingface.co/black-forest-labs)
 - Realistic Model: [STOIQO NewReality](https://civitai.com/models/161068?modelVersionId=728048), [Realistic Vision](https://civitai.com/models/4201/realistic-vision-v60-b1)
 - Fantasy Model: (???)
@@ -12,7 +12,7 @@
 - SDXL Model: [Juggernaut XL](https://civitai.com/models/133005/juggernaut-xl)
 - NSFW Model: (???)
 
-## ComyfyUI: 
+## ComyfyUI
 - [ComfyUI](https://www.comfy.org/)
   - After installing make sure you turn on ```Dev``` settings.
   - Then install ComfyUI Manager.
@@ -23,7 +23,7 @@
 - [OpenArt AI Workflows](https://openart.ai/workflows/home)
 - [CivitAI ComfyUI Search](https://civitai.com/search/models?sortBy=models_v9&query=comfyui)
 
-## Flux for ComfyUI:
+## Flux for ComfyUI
 - [Black Forest Labs](https://blackforestlabs.ai/announcing-black-forest-labs/?ref=blog.fal.ai)
 - [Black Forest Labs Github](https://github.com/black-forest-labs/flux)
   - [Flux.1 Dev Official](https://huggingface.co/black-forest-labs/FLUX.1-dev/blob/main/flux1-dev.safetensors)
