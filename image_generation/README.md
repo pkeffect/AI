@@ -1,6 +1,6 @@
-# AI RELATED THINGS
+# AI IMAGE GENERATION RELATED STUFF
 
-## Image Generation Models
+## Generation Models
 - Overall Model: [Flux](https://blackforestlabs.ai/)
   - [Flux.1 Dev Official](https://huggingface.co/black-forest-labs/FLUX.1-dev/blob/main/flux1-dev.safetensors)
   - [Flux.1 Schnell Official](https://huggingface.co/black-forest-labs/FLUX.1-schnell/blob/main/flux1-schnell.safetensors)
