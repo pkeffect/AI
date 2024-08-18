@@ -1,4 +1,4 @@
-# AI IMAGE GENERATION RELATED STUFF
+# AI IMAGE GENERATION
 
 ## UI MANAGER
 - [Stability Matrix](https://lykos.ai/)
