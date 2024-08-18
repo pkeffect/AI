@@ -18,6 +18,7 @@
   - Then install ComfyUI Manager.
 - [ComfyUI Github](https://github.com/comfyanonymous/ComfyUI)
 - [ComfyUI Manager](https://github.com/ltdrdata/ComfyUI-Manager) <- Must have! Seriously I can not imagine using ComfyUI without it.
+- [ComfyUI Workflow Manager](https://github.com/11cafe/comfyui-workspace-manager)
 - [ComfyUI Examples](https://comfyanonymous.github.io/ComfyUI_examples/)
 - [OpenArt AI Workflows](https://openart.ai/workflows/home)
 - [CivitAI ComfyUI Search](https://civitai.com/search/models?sortBy=models_v9&query=comfyui)
