@@ -22,7 +22,7 @@
 
 ## Flux for ComfyUI:
 - [Black Forest Labs](https://blackforestlabs.ai/announcing-black-forest-labs/?ref=blog.fal.ai)
-- [BFL Github](https://github.com/black-forest-labs/flux)
+- [Black Forest Labs Github](https://github.com/black-forest-labs/flux)
   - [Flux.1 Dev Official](https://huggingface.co/black-forest-labs/FLUX.1-dev/blob/main/flux1-dev.safetensors)
   - [Flux.1 Schnell Official](https://huggingface.co/black-forest-labs/FLUX.1-schnell/blob/main/flux1-schnell.safetensors)
   - [ComfyUI Flux Examples](https://comfyanonymous.github.io/ComfyUI_examples/flux/) - Instructions and links to other files needed for the above models.
