@@ -1,7 +1,7 @@
 # AI IMAGE GENERATION RELATED STUFF
 
 ## Generation Models
-- Overall Model: [Flux](https://blackforestlabs.ai/)
+- Overall Model: [Flux](https://huggingface.co/black-forest-labs)
 - Realistic Model: [STOIQO NewReality](https://civitai.com/models/161068?modelVersionId=728048), [Realistic Vision](https://civitai.com/models/4201/realistic-vision-v60-b1)
 - Fantasy Model: (???)
 - Anime Model: (???)
