@@ -8,10 +8,10 @@
   - [Dev/Schnell Merged](https://huggingface.co/drbaph/FLUX.1-schnell-dev-merged/blob/main/FLUX.1-schnell-dev-merged.safetensors)
   - [Demon Flux Dev/Schnell Merged](https://civitai.com/models/622876)
   - [ComfyUI Flux.1 Dev fp8](https://huggingface.co/Comfy-Org/flux1-dev/blob/main/flux1-dev-fp8.safetensors)
-- Realistic Model: [Realistic Vision](https://civitai.com/models/4201/realistic-vision-v60-b1)
+- Realistic Model: [STOIQO NewReality](https://civitai.com/models/161068?modelVersionId=728048), [Realistic Vision](https://civitai.com/models/4201/realistic-vision-v60-b1)
 - Fantasy Model: (???)
 - Anime Model: (???)
-- SDXL Model: [STOIQO NewReality](https://civitai.com/models/161068?modelVersionId=728048), [Juggernaut XL](https://civitai.com/models/133005/juggernaut-xl)
+- SDXL Model: [Juggernaut XL](https://civitai.com/models/133005/juggernaut-xl)
 - NSFW Model: (???)
 
 ## ComyfUI: 
