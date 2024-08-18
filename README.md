@@ -5,6 +5,7 @@
   - [Flux.1 Dev Official](https://huggingface.co/black-forest-labs/FLUX.1-dev/blob/main/flux1-dev.safetensors)
   - [Flux.1 Schnell Official](https://huggingface.co/black-forest-labs/FLUX.1-schnell/blob/main/flux1-schnell.safetensors)
   - [Dev/Schnell Merged](https://huggingface.co/drbaph/FLUX.1-schnell-dev-merged/blob/main/FLUX.1-schnell-dev-merged.safetensors)
+  - [Demon Flux Dev/Schnell Merged](https://civitai.com/models/622876)
   - [ComfyUI Flux.1 Dev fp8](https://huggingface.co/Comfy-Org/flux1-dev/blob/main/flux1-dev-fp8.safetensors)
 - Realistic Model: [Realistic Vision](https://civitai.com/models/4201/realistic-vision-v60-b1)
 - Fantasy Model: (???)
