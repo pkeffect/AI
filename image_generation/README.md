@@ -34,3 +34,14 @@
 - [CivitAI Flux Search](https://civitai.com/search/models?sortBy=models_v9&query=flux)
 - [XLabs AI Github](https://github.com/XLabs-AI/x-flux)
 - [Flux Styles Test Gallery](https://enragedantelope.github.io/Styles-FluxDev/)
+
+# EXTRAS
+- If you come across workflows with .cube files, make sure you have ComfyUI Essentials custom node installed.
+- They belong in: ```ComfyUI\custom_nodes\ComfyUI_essentials\luts```
+
+## FREE LUTS PACKS
+- https://filtergrade.com/free-cinematic-luts-video-editing/
+- https://cdn.filtergrade.com/wp-content/uploads/2017/08/22113749/FG-Free-Cine-LUTs-Pack-v2.zip
+- https://shutterstock-blog.s3.amazonaws.com/assets/free-luts/free-customized-LUTs.zip
+- https://pbblogassets.s3.amazonaws.com/uploads/freebies/RS-35-Free-LUTs.zip
+- https://vip-go.premiumbeat.com/wp-content/uploads/2017/09/PB-17-FREE-LUTs.zip
