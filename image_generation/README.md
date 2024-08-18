@@ -40,7 +40,6 @@
 - They belong in: ```ComfyUI\custom_nodes\ComfyUI_essentials\luts```
 
 ## FREE LUTS PACKS
-- https://filtergrade.com/free-cinematic-luts-video-editing/
 - https://cdn.filtergrade.com/wp-content/uploads/2017/08/22113749/FG-Free-Cine-LUTs-Pack-v2.zip
 - https://shutterstock-blog.s3.amazonaws.com/assets/free-luts/free-customized-LUTs.zip
 - https://pbblogassets.s3.amazonaws.com/uploads/freebies/RS-35-Free-LUTs.zip
