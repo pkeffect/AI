@@ -14,6 +14,8 @@
 
 ## ComyfyUI: 
 - [ComfyUI](https://www.comfy.org/)
+  - After installing make sure you turn on ```Dev``` settings.
+  - Then install ComfyUI Manager.
 - [ComfyUI Github](https://github.com/comfyanonymous/ComfyUI)
 - [ComfyUI Manager](https://github.com/ltdrdata/ComfyUI-Manager) <- Must have! Seriously I can not imagine using ComfyUI without it.
 - [ComfyUI Examples](https://comfyanonymous.github.io/ComfyUI_examples/)
