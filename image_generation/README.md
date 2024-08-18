@@ -1,8 +1,8 @@
 # AI IMAGE GENERATION
 
 ## UI MANAGER
-- [Stability Matrix](https://lykos.ai/)
-- [Stability Matrix Github](https://github.com/LykosAI/StabilityMatrix)
+- [Stability Matrix](https://lykos.ai/) - This will handle most installations of the major UIs and a couple trainers.
+- [Stability Matrix Github](https://github.com/LykosAI/StabilityMatrix) - It is also multi-platform.
 
 ## Generation Models
 - Overall Model: [Flux](https://huggingface.co/black-forest-labs)
