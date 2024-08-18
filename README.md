@@ -23,7 +23,7 @@
 ## Flux for ComfyUI:
 - [Black Forest Labs](https://blackforestlabs.ai/announcing-black-forest-labs/?ref=blog.fal.ai)
 - [BFL Github](https://github.com/black-forest-labs/flux)
-- [ComfyUI Flux Examples](https://comfyanonymous.github.io/ComfyUI_examples/flux/)
+- [ComfyUI Flux Examples](https://comfyanonymous.github.io/ComfyUI_examples/flux/) - Instructions and links to other files needed
 - [Huggingface Flux Prompt Generator](https://huggingface.co/spaces/gokaygokay/FLUX-Prompt-Generator)
 - [CivitAI Flux Search](https://civitai.com/search/models?sortBy=models_v9&query=flux)
 - [XLabs AI Github](https://github.com/XLabs-AI/x-flux)
