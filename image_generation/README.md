@@ -13,7 +13,7 @@
 - [ComfyUI Github](https://github.com/comfyanonymous/ComfyUI)
 - [ComfyUI Manager](https://github.com/ltdrdata/ComfyUI-Manager) <- Must have!
 - [ComfyUI Examples](https://comfyanonymous.github.io/ComfyUI_examples/)
-- [Open Art AI Workflows](https://openart.ai/workflows/home)
+- [OpenArt AI Workflows](https://openart.ai/workflows/home)
 - [CivitAI ComfyUI Search](https://civitai.com/search/models?sortBy=models_v9&query=comfyui)
 
 ## Flux for ComfyUI:
