@@ -1,5 +1,9 @@
 # AI IMAGE GENERATION RELATED STUFF
 
+## UI MANAGER
+- [Stability Matrix](https://lykos.ai/)
+- [Stability Matrix Github](https://github.com/LykosAI/StabilityMatrix)
+
 ## Generation Models
 - Overall Model: [Flux](https://huggingface.co/black-forest-labs)
 - Realistic Model: [STOIQO NewReality](https://civitai.com/models/161068?modelVersionId=728048), [Realistic Vision](https://civitai.com/models/4201/realistic-vision-v60-b1)
@@ -8,7 +12,7 @@
 - SDXL Model: [Juggernaut XL](https://civitai.com/models/133005/juggernaut-xl)
 - NSFW Model: (???)
 
-## ComyfUI: 
+## ComyfyUI: 
 - [ComfyUI](https://www.comfy.org/)
 - [ComfyUI Github](https://github.com/comfyanonymous/ComfyUI)
 - [ComfyUI Manager](https://github.com/ltdrdata/ComfyUI-Manager) <- Must have!
