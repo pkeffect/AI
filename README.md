@@ -1,28 +1,30 @@
 # AI RELATED THINGS
 
-## Stable Diffusion Models (my choices)
-- Overall Model: Flux
-- Realistic Model: Realistic Vision
-- Fantasy Model: DreamShaper
-- Anime Model: Anything v5
-- SDXL Model: Juggernaut XL
+## Image Generation Models (my choices)
+- Overall Model: [Flux](https://blackforestlabs.ai/)
+  - [Flux.1 Dev Official](https://huggingface.co/black-forest-labs/FLUX.1-dev/blob/main/flux1-dev.safetensors)
+  - [Flux.1 Schnell Official](https://huggingface.co/black-forest-labs/FLUX.1-schnell/blob/main/flux1-schnell.safetensors)
+    - [Vae for above](https://huggingface.co/black-forest-labs/FLUX.1-dev/blob/main/ae.safetensors)
+  - [Dev/Schnell Merged](https://huggingface.co/drbaph/FLUX.1-schnell-dev-merged/blob/main/FLUX.1-schnell-dev-merged.safetensors)
+- Realistic Model: [Realistic Vision](https://civitai.com/models/4201/realistic-vision-v60-b1)
+- Fantasy Model: (???)
+- Anime Model: (???)
+- SDXL Model: [Juggernaut XL](https://civitai.com/models/133005/juggernaut-xl)
 - NSFW Model: (???)
 
 ## ComyfUI: 
-- https://www.comfy.org/
-- https://github.com/comfyanonymous/ComfyUI
-- https://github.com/ltdrdata/ComfyUI-Manager
-- https://comfyanonymous.github.io/ComfyUI_examples/
-- https://replicate.com/fofr/any-comfyui-workflow
-- https://openart.ai/workflows/home
-- https://civitai.com/search/models?sortBy=models_v9&query=comfyui
-
+- [ComfyUI](https://www.comfy.org/)
+- [ComfyUI Github](https://github.com/comfyanonymous/ComfyUI)
+- [ComfyUI Manager](https://github.com/ltdrdata/ComfyUI-Manager)
+- [ComfyUI Examples](https://comfyanonymous.github.io/ComfyUI_examples/)
+- [Open Art AI Workflows](https://openart.ai/workflows/home)
+- [CivitAI ComfyUI Search](https://civitai.com/search/models?sortBy=models_v9&query=comfyui)
 
 ## Flux for ComfyUI:
-- https://blackforestlabs.ai/announcing-black-forest-labs/?ref=blog.fal.ai
-- https://github.com/black-forest-labs/flux
-- https://comfyanonymous.github.io/ComfyUI_examples/flux/
-- https://huggingface.co/spaces/gokaygokay/FLUX-Prompt-Generator
-- https://civitai.com/search/models?sortBy=models_v9&query=flux
-- https://github.com/XLabs-AI/x-flux
-- https://enragedantelope.github.io/Styles-FluxDev/
+- [Black Forest Labs](https://blackforestlabs.ai/announcing-black-forest-labs/?ref=blog.fal.ai)
+- [BFL Github](https://github.com/black-forest-labs/flux)
+- [ComfyUI Flux Examples](https://comfyanonymous.github.io/ComfyUI_examples/flux/)
+- [Huggingface Flux Prompt Generator](https://huggingface.co/spaces/gokaygokay/FLUX-Prompt-Generator)
+- [CivitAI Flux Search](https://civitai.com/search/models?sortBy=models_v9&query=flux)
+- [XLabs AI Github](https://github.com/XLabs-AI/x-flux)
+- [Flux Styles Test Gallery](https://enragedantelope.github.io/Styles-FluxDev/)
