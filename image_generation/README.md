@@ -36,7 +36,7 @@
 - [Flux Styles Test Gallery](https://enragedantelope.github.io/Styles-FluxDev/)
 
 # EXTRAS
-- If you come across workflows with .cube files, make sure you have ComfyUI Essentials custom node installed.
+- If you come across workflows with [.cube](https://fileinfo.com/extension/cube) files, make sure you have [ComfyUI Essentials](https://github.com/cubiq/ComfyUI_essentials) custom node installed.
 - They belong in: ```ComfyUI\custom_nodes\ComfyUI_essentials\luts```
 
 ## FREE LUTS PACKS
