@@ -1,10 +1,9 @@
 # Open-WebUI-Dev-Cuda | https://github.com/open-webui/open-webui
 # Searxng | https://github.com/searxng/searxng
 # Pipelines | https://github.com/open-webui/pipelines
-# Watchtower | https://containrrr.dev/watchtower/
 
 services:
-#  ollama:
+#  ollama: # Installed locally in this setup.
 #    volumes:
 #      - H:/ai/.ollama:/root/.ollama
 #    container_name: ollama
