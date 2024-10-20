@@ -3,7 +3,7 @@
 # Pipelines | https://github.com/open-webui/pipelines
 
 services:
-#  ollama: # Installed locally in this setup.
+#  ollama: # Installed locally in Windows 11 this setup.
 #    volumes:
 #      - H:/ai/.ollama:/root/.ollama
 #    container_name: ollama
@@ -24,14 +24,14 @@ services:
 #      - "hyperspace"
       
   open-webui-dev-cuda:
-    image: ghcr.io/open-webui/open-webui:dev-cuda
+    image: ghcr.io/open-webui/open-webui:dev-cuda # development CUDA image; may want to use ghcr.io/open-webui/open-webui:latest
     container_name: open-webui-dev-cuda
     stdin_open: true
     tty: true    
     ports:
       - "3000:8080"
     volumes:
-      - ./.data-open-webui:/app/backend/data
+      - ./.data-open-webui:/app/backend/data # locally mounted directory, not the default docker volume
     deploy:
       resources:
         reservations:
@@ -53,7 +53,7 @@ services:
       - 'AUTOMATIC1111_BASE_URL=${AUTOMATIC1111_BASE_URL}'
     restart: always
     networks:
-      - "hyperspace"
+      - "hyperspace" # custom docker network
 
   searxng:
     image: searxng/searxng:latest
@@ -61,12 +61,12 @@ services:
     ports:
       - "4000:8080"      
     volumes:
-      - ./.data-searxng:/etc/searxng:rw
+      - ./.data-searxng:/etc/searxng:rw # locally mounted directory, not the default docker volume
     depends_on:
       - open-webui-dev-cuda       
     restart: always  
     networks:
-      - "hyperspace"
+      - "hyperspace" # custom docker network
       
   pipelines:
     image: ghcr.io/open-webui/pipelines:main 
@@ -79,12 +79,12 @@ services:
 #      GOOGLE_API_KEY: "${GOOGLE_API_KEY}"
 #      PIPELINES_URLS: "${PIPELINES_URLS}"
     volumes:
-      - ./.data-pipelines:/app/pipelines
+      - ./.data-pipelines:/app/pipelines # locally mounted directory, not the default docker volume
     depends_on:
       - open-webui-dev-cuda    
     restart: always
     networks:
-      - "hyperspace"
+      - "hyperspace" # custom docker network
   
 networks:
   hyperspace:
