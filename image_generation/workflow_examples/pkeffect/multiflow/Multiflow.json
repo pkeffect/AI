@@ -1417,7 +1417,6 @@
           "name": "IMAGE",
           "type": "IMAGE",
           "links": [
-            706,
             707
           ],
           "slot_index": 0
@@ -1835,39 +1834,6 @@
       "shape": 1
     },
     {
-      "id": 385,
-      "type": "LayerUtility: PurgeVRAM",
-      "pos": {
-        "0": 755,
-        "1": 3825
-      },
-      "size": {
-        "0": 270,
-        "1": 82
-      },
-      "flags": {},
-      "order": 79,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "anything",
-          "type": "*",
-          "link": 706
-        }
-      ],
-      "outputs": [],
-      "properties": {
-        "Node name for S&R": "LayerUtility: PurgeVRAM"
-      },
-      "widgets_values": [
-        false,
-        false
-      ],
-      "color": "#222",
-      "bgcolor": "#000",
-      "shape": 1
-    },
-    {
       "id": 386,
       "type": "CascadeResolutions",
       "pos": {
@@ -2010,7 +1976,7 @@
         "1": 986.4085693359375
       },
       "flags": {},
-      "order": 80,
+      "order": 79,
       "mode": 0,
       "inputs": [
         {
@@ -2129,7 +2095,6 @@
           "name": "IMAGE",
           "type": "IMAGE",
           "links": [
-            727,
             728
           ],
           "slot_index": 0
@@ -2692,39 +2657,6 @@
       "shape": 1
     },
     {
-      "id": 403,
-      "type": "LayerUtility: PurgeVRAM",
-      "pos": {
-        "0": 763.82568359375,
-        "1": 5182.00732421875
-      },
-      "size": {
-        "0": 270,
-        "1": 82
-      },
-      "flags": {},
-      "order": 81,
-      "mode": 2,
-      "inputs": [
-        {
-          "name": "anything",
-          "type": "*",
-          "link": 727
-        }
-      ],
-      "outputs": [],
-      "properties": {
-        "Node name for S&R": "LayerUtility: PurgeVRAM"
-      },
-      "widgets_values": [
-        false,
-        false
-      ],
-      "color": "#222",
-      "bgcolor": "#000",
-      "shape": 1
-    },
-    {
       "id": 404,
       "type": "CascadeResolutions",
       "pos": {
@@ -2851,7 +2783,7 @@
         "1": 819.559814453125
       },
       "flags": {},
-      "order": 82,
+      "order": 80,
       "mode": 2,
       "inputs": [
         {
@@ -2909,7 +2841,7 @@
         "1": 300.01202392578125
       },
       "flags": {},
-      "order": 84,
+      "order": 82,
       "mode": 2,
       "inputs": [
         {
@@ -3034,7 +2966,7 @@
         "1": 770.6215209960938
       },
       "flags": {},
-      "order": 85,
+      "order": 83,
       "mode": 2,
       "inputs": [
         {
@@ -3083,7 +3015,7 @@
         "1": 715.1029052734375
       },
       "flags": {},
-      "order": 86,
+      "order": 84,
       "mode": 2,
       "inputs": [
         {
@@ -3141,7 +3073,7 @@
       "flags": {
         "collapsed": false
       },
-      "order": 87,
+      "order": 85,
       "mode": 2,
       "inputs": [
         {
@@ -3228,7 +3160,7 @@
         "1": 812.2551879882812
       },
       "flags": {},
-      "order": 88,
+      "order": 86,
       "mode": 2,
       "inputs": [
         {
@@ -3455,7 +3387,7 @@
         "1": 452.74700927734375
       },
       "flags": {},
-      "order": 83,
+      "order": 81,
       "mode": 2,
       "inputs": [
         {
@@ -4616,14 +4548,6 @@
       "CLIP"
     ],
     [
-      706,
-      375,
-      0,
-      385,
-      0,
-      "*"
-    ],
-    [
       707,
       375,
       0,
@@ -4782,14 +4706,6 @@
       402,
       1,
       "CLIP"
-    ],
-    [
-      727,
-      391,
-      0,
-      403,
-      0,
-      "*"
     ],
     [
       728,
@@ -5231,8 +5147,8 @@
     "ds": {
       "scale": 0.6588450000000003,
       "offset": [
-        533.5838605192016,
-        -4332.184144871306
+        641.3482056990227,
+        673.5455791153692
       ]
     },
     "groupNodes": {
