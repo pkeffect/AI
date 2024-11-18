@@ -16,6 +16,7 @@
 * [Open-WebUI github](https://github.com/open-webui/open-webui)
 * [Open-WebUI Documentation](https://docs.openwebui.com/)
 * [Open-WebUI Pipelines](https://github.com/open-webui/pipelines)
+* [Open-WebUI Discord](https://discord.gg/open-webui-1170866489302188073)
 ## Huggingface
 * [Huggingface](https://huggingface.co/)
 ## Stable Diffusion(s)
