@@ -55,6 +55,8 @@ services:
       - 'AUTOMATIC1111_BASE_URL=${AUTOMATIC1111_BASE_URL}'
       - 'TEXT_EXTRACTION_ENGINE=${TEXT_EXTRACTION_ENGINE}'
       - 'ENV=${ENV}'
+      - 'USER_AGENT=${USER_AGENT}'
+      - 'GLOBAL_LOG_LEVEL=${GLOBAL_LOG_LEVEL}'      
     restart: always
     networks:
       - "hyperspace"
