@@ -1,9 +1,11 @@
-# Open-WebUI-Dev-Cuda | https://github.com/open-webui/open-webui
-# Searxng | https://github.com/searxng/searxng
-# Pipelines | https://github.com/open-webui/pipelines
+# Ollama (not bundled in this setup) | https://ollama.com/
+# Open-WebUI:dev:cuda | https://github.com/open-webui/open-webui/
+# Searxng | https://github.com/searxng/searxng/
+# Pipelines | https://github.com/open-webui/pipelines/
+# Tika | https://tika.apache.org/
 
 services:
-#  ollama: # Installed locally in Windows 11 this setup.
+#  ollama:
 #    volumes:
 #      - H:/ai/.ollama:/root/.ollama
 #    container_name: ollama
@@ -24,14 +26,14 @@ services:
 #      - "hyperspace"
       
   open-webui-dev-cuda:
-    image: ghcr.io/open-webui/open-webui:dev-cuda # development CUDA image; may want to use ghcr.io/open-webui/open-webui:latest
+    image: ghcr.io/open-webui/open-webui:dev-cuda
     container_name: open-webui-dev-cuda
     stdin_open: true
     tty: true    
     ports:
       - "3000:8080"
     volumes:
-      - ./.data-open-webui:/app/backend/data # locally mounted directory, not the default docker volume
+      - ./.data-open-webui:/app/backend/data
     deploy:
       resources:
         reservations:
@@ -51,22 +53,35 @@ services:
       - 'USE_CUDA_DOCKER=${USE_CUDA_DOCKER}'
       - 'COMFYUI_BASE_URL=${COMFYUI_BASE_URL}'
       - 'AUTOMATIC1111_BASE_URL=${AUTOMATIC1111_BASE_URL}'
+      - 'TEXT_EXTRACTION_ENGINE=${TEXT_EXTRACTION_ENGINE}'
+      - 'ENV=${ENV}'
     restart: always
     networks:
-      - "hyperspace" # custom docker network
+      - "hyperspace"
 
+  tika:
+    image: apache/tika:latest-full
+    container_name: open-webui-tika
+    expose:
+      - "9998:9998"
+    depends_on:
+      - open-webui-dev-cuda       
+    networks:
+      - "hyperspace"
+    restart: unless-stopped
+    
   searxng:
     image: searxng/searxng:latest
     container_name: open-webui-searxng
     ports:
       - "4000:8080"      
     volumes:
-      - ./.data-searxng:/etc/searxng:rw # locally mounted directory, not the default docker volume
+      - ./.data-searxng:/etc/searxng:rw
     depends_on:
       - open-webui-dev-cuda       
     restart: always  
     networks:
-      - "hyperspace" # custom docker network
+      - "hyperspace"
       
   pipelines:
     image: ghcr.io/open-webui/pipelines:main 
@@ -79,12 +94,12 @@ services:
 #      GOOGLE_API_KEY: "${GOOGLE_API_KEY}"
 #      PIPELINES_URLS: "${PIPELINES_URLS}"
     volumes:
-      - ./.data-pipelines:/app/pipelines # locally mounted directory, not the default docker volume
+      - ./.data-pipelines:/app/pipelines
     depends_on:
       - open-webui-dev-cuda    
     restart: always
     networks:
-      - "hyperspace" # custom docker network
+      - "hyperspace"
   
 networks:
   hyperspace:
