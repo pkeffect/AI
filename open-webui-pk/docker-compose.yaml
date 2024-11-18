@@ -1,7 +1,7 @@
 # Ollama (not bundled in this setup) | https://ollama.com/
-# Open-WebUI:dev:cuda | https://github.com/open-webui/open-webui/
+# Open-WebUI:dev:cuda | https://github.com/open-webui/open-webui/ | https://docs.openwebui.com/
 # Searxng | https://github.com/searxng/searxng/
-# Pipelines | https://github.com/open-webui/pipelines/
+# Pipelines | https://github.com/open-webui/pipelines/ | https://docs.openwebui.com/pipelines/
 # Tika | https://tika.apache.org/
 
 services:
@@ -89,10 +89,12 @@ services:
     ports:
       - "9099:9099"
 #    environment:
-#      ANTHROPIC_API_KEY: "${ANTHROPIC_API_KEY}"
-#      COHERE_API_KEY: "${COHERE_API_KEY}"
-#      GOOGLE_API_KEY: "${GOOGLE_API_KEY}"
-#      PIPELINES_URLS: "${PIPELINES_URLS}"
+#     - 'ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY}'
+#     - 'COHERE_API_KEY=${COHERE_API_KEY}'
+#     - 'GOOGLE_API_KEY=${GOOGLE_API_KEY}'
+#     - 'RESET_PIPELINES_DIR=${RESET_PIPELINES_DIR}'
+#     - 'PIPELINES_REQUIREMENTS_PATH=${PIPELINES_REQUIREMENTS_PATH}'
+#     - 'PIPELINES_URLS=${PIPELINES_URLS}'
     volumes:
       - ./.data-pipelines:/app/pipelines
     depends_on:
