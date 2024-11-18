@@ -56,7 +56,7 @@ services:
       - 'TEXT_EXTRACTION_ENGINE=${TEXT_EXTRACTION_ENGINE}'
       - 'ENV=${ENV}'
       - 'USER_AGENT=${USER_AGENT}'
-      - 'GLOBAL_LOG_LEVEL=${GLOBAL_LOG_LEVEL}'      
+      - 'GLOBAL_LOG_LEVEL=${GLOBAL_LOG_LEVEL}'
     restart: always
     networks:
       - "hyperspace"
@@ -90,13 +90,13 @@ services:
     container_name: open-webui-pipelines
     ports:
       - "9099:9099"
-#    environment:
+    environment:
+      - 'RESET_PIPELINES_DIR=${RESET_PIPELINES_DIR}'
+#     - 'PIPELINES_REQUIREMENTS_PATH=${PIPELINES_REQUIREMENTS_PATH}'
+      - 'PIPELINES_URLS=${PIPELINES_URLS}'
 #     - 'ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY}'
 #     - 'COHERE_API_KEY=${COHERE_API_KEY}'
 #     - 'GOOGLE_API_KEY=${GOOGLE_API_KEY}'
-#     - 'RESET_PIPELINES_DIR=${RESET_PIPELINES_DIR}'
-#     - 'PIPELINES_REQUIREMENTS_PATH=${PIPELINES_REQUIREMENTS_PATH}'
-#     - 'PIPELINES_URLS=${PIPELINES_URLS}'
     volumes:
       - ./.data-pipelines:/app/pipelines
     depends_on:
