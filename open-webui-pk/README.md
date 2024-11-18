@@ -14,7 +14,7 @@
 ## OpenWebUI 
 * [Open-WebUI](https://openwebui.com/)
 * [Open-WebUI github](https://github.com/open-webui/open-webui)
-* [Open-WebUI Documentation] (https://docs.openwebui.com/)
+* [Open-WebUI Documentation](https://docs.openwebui.com/)
 * [Open-WebUI Pipelines](https://github.com/open-webui/pipelines)
 ## Huggingface
 * [Huggingface](https://huggingface.co/)
