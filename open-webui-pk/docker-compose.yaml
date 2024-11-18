@@ -12,7 +12,7 @@ services:
 #    pull_policy: always
 #    tty: true
 #    restart: unless-stopped
-#    image: ollama/ollama:0.2.8-rc2
+#    image: ollama/ollama:latest
     # GPU support
 #    deploy:
 #      resources:
