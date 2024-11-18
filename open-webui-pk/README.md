@@ -4,7 +4,7 @@
   *  [Ollama](https://ollama.com/) is installed locally, not in docker.
   * Volumes are stored locally, not in docker.
 * This is the most efficient setup for my system.
-  * Windows 11 | [Docker Desktop](https://www.docker.com/products/docker-desktop/) | [WSL2](https://learn.microsoft.com/en-us/windows/wsl/install) - [Ubuntu 22.04](https://ubuntu.com/)
+  * Windows 11 | [Docker Desktop](https://www.docker.com/products/docker-desktop/) | [WSL2](https://learn.microsoft.com/en-us/windows/wsl/install) - [24.10 (Oracular Oriole)](https://ubuntu.com/)
   * AMD Ryzen 9 3900XT | 128GB DDR4 RAM | ASUS TUF RTX 3080 GAMING OC 10GB
   
 ## Ollama
