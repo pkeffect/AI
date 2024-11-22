@@ -13,7 +13,7 @@ services:
 #    tty: true
 #    restart: unless-stopped
 #    image: ollama/ollama:latest
-    # GPU support
+#### GPU support
 #    deploy:
 #      resources:
 #        reservations:
