@@ -1,9 +1,9 @@
 # Ollama (not bundled in this setup) | https://ollama.com/
 # Open-WebUI:dev-cuda (the heart)| https://github.com/open-webui/open-webui/ | https://docs.openwebui.com/
-# Searxng (Local Secure Search)| https://github.com/searxng/searxng/
-# Pipelines (OWUI modding/scaling)| https://github.com/open-webui/pipelines/ | https://docs.openwebui.com/pipelines/
+# Searxng (local secure search)| https://github.com/searxng/searxng/
+# Pipelines (owui modding/scaling)| https://github.com/open-webui/pipelines/ | https://docs.openwebui.com/pipelines/
 # Tika (RAG) | https://tika.apache.org/
-# OpenedAI-Speech | https://github.com/matatonic/openedai-speech
+# OpenedAI-Speech (text-to-speech)| https://github.com/matatonic/openedai-speech
 
 services:
 #  ollama:
@@ -57,6 +57,7 @@ services:
       - 'TEXT_EXTRACTION_ENGINE=${TEXT_EXTRACTION_ENGINE}'
       - 'ENV=${ENV}'
       - 'USER_AGENT=${USER_AGENT}'
+      - 'WEBUI_URL=${WEBUI_URL}'
       - 'GLOBAL_LOG_LEVEL=${GLOBAL_LOG_LEVEL}'
     restart: always
     networks:
