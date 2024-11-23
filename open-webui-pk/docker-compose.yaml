@@ -104,6 +104,30 @@ services:
     restart: always
     networks:
       - "hyperspace"
+
+  openedai-speech:
+    image: ghcr.io/matatonic/openedai-speech:latest
+    container_name: open-webui-openedai-speech
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./.data-openedai-speech/voices:/app/voices
+      - ./.data-openedai-speech/config:/app/config
+    restart: unless-stopped
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities:
+                - gpu
+    env_file:
+      - .speech.env
+    depends_on:
+      - open-webui-dev-cuda
+    networks:
+      - "hyperspace"
   
 networks:
   hyperspace:
