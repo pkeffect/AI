@@ -6,6 +6,8 @@
 * This is the most efficient setup for my system.
   * Windows 11 | [Docker Desktop](https://www.docker.com/products/docker-desktop/) | [WSL2](https://learn.microsoft.com/en-us/windows/wsl/install) - [24.10 (Oracular Oriole)](https://ubuntu.com/)
   * AMD Ryzen 9 3900XT | 128GB DDR4 RAM | ASUS TUF RTX 3080 GAMING OC 10GB
+
+Check the docker-compose.yaml for links and information on services also.
   
 ## Ollama
 * [Ollama](https://ollama.com/)
