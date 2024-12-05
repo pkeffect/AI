@@ -125,7 +125,7 @@ services:
               capabilities:
                 - gpu
     env_file:
-      - .speech.env
+      - .env
     depends_on:
       - open-webui-dev-cuda
     networks:
