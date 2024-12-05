@@ -4,6 +4,8 @@
 # Pipelines (owui modding/scaling)| https://github.com/open-webui/pipelines/ | https://docs.openwebui.com/pipelines/
 # Tika (RAG) | https://tika.apache.org/
 # OpenedAI-Speech (text-to-speech)| https://github.com/matatonic/openedai-speech
+# Postgres (SQL DB) | https://www.postgresql.org/
+# ChromaDB (RAG) | https://docs.trychroma.com/
 
 services:
 #  ollama:
@@ -130,6 +132,40 @@ services:
       - open-webui-dev-cuda
     networks:
       - "hyperspace"
+
+#  chromadb:
+#    image: docker.io/chromadb/chroma:latest
+#    container_name: open-webui-chromadb
+#    environment:
+#      - 'ALLOW_RESET=${ALLOW_RESET}'
+#      - 'ANONYMIZED_TELEMETRY=${ANONYMIZED_TELEMETRY}'
+#      - 'CHROMA_ROOT_PASSWORD=${CHROMA_ROOT_PASSWORD}'
+#      - 'CHROMA_DATABASE=${CHROMA_DATABASE}'
+#      - 'CHROMA_HTTP_HOST=${CHROMA_HTTP_HOST}'
+#    ports:
+#      - "3308:3306"
+#    volumes:
+#      - ./.data-chroma:/chroma/chroma
+#      - ./.data-chroma:/app/data
+#    restart: always   
+#    networks:
+#      - "hyperspace"
+      
+#  postgres:
+#    container_name: open-webui-postgres
+#    image: docker.io/postgres:latest
+#    environment: 
+#      - 'POSTGRES_PASSWORD=${POSTGRES_PASSWORD}'
+#      - 'POSTGRES_PORT=${POSTGRES_PORT}'
+#      - 'POSTGRES_DB=${POSTGRES_DATABASE}'
+#      - 'POSTGRES_USER=${POSTGRES_USER}'
+#    ports: 
+#      - "5333:5432"
+#    volumes:
+#      - ./.data-postgres:/var/lib/postgresql/data
+#    restart: unless-stopped
+#    networks:
+#      - "hyperspace"
   
 networks:
   hyperspace:
