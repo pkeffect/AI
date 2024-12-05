@@ -1,11 +1,11 @@
-# Ollama (not bundled in this setup) | https://ollama.com/
+# Ollama (Serves LLMs) (not bundled in this setup) | https://ollama.com/
 # Open-WebUI:dev-cuda (the heart)| https://github.com/open-webui/open-webui/ | https://docs.openwebui.com/
 # Searxng (local secure search)| https://github.com/searxng/searxng/
 # Pipelines (owui modding/scaling)| https://github.com/open-webui/pipelines/ | https://docs.openwebui.com/pipelines/
 # Tika (RAG) | https://tika.apache.org/
 # OpenedAI-Speech (text-to-speech)| https://github.com/matatonic/openedai-speech
-# Postgres (SQL DB) | https://www.postgresql.org/
-# ChromaDB (RAG) | https://docs.trychroma.com/
+# Postgres (SQL DB) (optional) | https://www.postgresql.org/
+# ChromaDB (RAG) (optional) | https://docs.trychroma.com/
 
 services:
 #  ollama:
