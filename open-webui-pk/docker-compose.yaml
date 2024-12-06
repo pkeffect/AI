@@ -61,6 +61,7 @@ services:
       - 'USER_AGENT=${USER_AGENT}'
       - 'WEBUI_URL=${WEBUI_URL}'
       - 'GLOBAL_LOG_LEVEL=${GLOBAL_LOG_LEVEL}'
+      - 'SAFE_MODE=${SAFE_MODE}'
     restart: always
     networks:
       - "hyperspace"
@@ -109,27 +110,29 @@ services:
     networks:
       - "hyperspace"
 
-  openedai-speech:
-    image: ghcr.io/matatonic/openedai-speech:latest
-    container_name: open-webui-openedai-speech
-    ports:
-      - "8000:8000"
-    volumes:
-      - ./.data-openedai-speech/voices:/app/voices
-      - ./.data-openedai-speech/config:/app/config
-    restart: unless-stopped
-    deploy:
-      resources:
-        reservations:
-          devices:
-            - driver: nvidia
-              count: 1
-              capabilities:
-                - gpu
-    depends_on:
-      - open-webui-dev-cuda
-    networks:
-      - "hyperspace"
+#  openedai-speech:
+#    image: ghcr.io/matatonic/openedai-speech:latest
+#    container_name: open-webui-openedai-speech
+#    ports:
+#      - "8000:8000"
+#    volumes:
+#      - ./.data-openedai-speech/voices:/app/voices
+#      - ./.data-openedai-speech/config:/app/config
+#    restart: unless-stopped
+#    deploy:
+#      resources:
+#        reservations:
+#          devices:
+#            - driver: nvidia
+#              count: 1
+#              capabilities:
+#                - gpu
+#    env_file:
+#      - .env
+#    depends_on:
+#      - open-webui-dev-cuda
+#    networks:
+#      - "hyperspace"
 
 #  chromadb:
 #    image: docker.io/chromadb/chroma:latest
@@ -145,8 +148,6 @@ services:
 #    volumes:
 #      - ./.data-chroma:/chroma/chroma
 #      - ./.data-chroma:/app/data
-#    depends_on:
-#      - open-webui-dev-cuda 
 #    restart: always   
 #    networks:
 #      - "hyperspace"
@@ -163,8 +164,6 @@ services:
 #      - "5333:5432"
 #    volumes:
 #      - ./.data-postgres:/var/lib/postgresql/data
-#    depends_on:
-#      - open-webui-dev-cuda 
 #    restart: unless-stopped
 #    networks:
 #      - "hyperspace"
