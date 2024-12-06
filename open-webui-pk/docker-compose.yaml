@@ -126,8 +126,6 @@ services:
               count: 1
               capabilities:
                 - gpu
-    env_file:
-      - .env
     depends_on:
       - open-webui-dev-cuda
     networks:
@@ -147,6 +145,8 @@ services:
 #    volumes:
 #      - ./.data-chroma:/chroma/chroma
 #      - ./.data-chroma:/app/data
+#    depends_on:
+#      - open-webui-dev-cuda 
 #    restart: always   
 #    networks:
 #      - "hyperspace"
@@ -163,6 +163,8 @@ services:
 #      - "5333:5432"
 #    volumes:
 #      - ./.data-postgres:/var/lib/postgresql/data
+#    depends_on:
+#      - open-webui-dev-cuda 
 #    restart: unless-stopped
 #    networks:
 #      - "hyperspace"
