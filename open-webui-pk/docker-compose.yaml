@@ -1,9 +1,9 @@
 # Ollama (Serves LLMs) (not bundled in this setup) | https://ollama.com/
 # Open-WebUI:dev-cuda (the heart)| https://github.com/open-webui/open-webui/ | https://docs.openwebui.com/
-# Searxng (local secure search)| https://github.com/searxng/searxng/
-# Pipelines (owui modding/scaling)| https://github.com/open-webui/pipelines/ | https://docs.openwebui.com/pipelines/
-# Tika (RAG) | https://tika.apache.org/
-# OpenedAI-Speech (text-to-speech)| https://github.com/matatonic/openedai-speech
+# Searxng (optional local secure search)| https://github.com/searxng/searxng/
+# Pipelines (optional owui modding/scaling)| https://github.com/open-webui/pipelines/ | https://docs.openwebui.com/pipelines/
+# Tika (optional RAG) | https://tika.apache.org/
+# OpenedAI-Speech (optional text-to-speech)| https://github.com/matatonic/openedai-speech
 # Postgres (SQL DB) (optional database) | https://www.postgresql.org/
 # ChromaDB (RAG) (optional database) | https://docs.trychroma.com/
 # Prometheus (optional monitoring) | https://prometheus.io/docs/introduction/overview/
@@ -101,8 +101,8 @@ services:
       - "9099:9099"
     environment:
       - 'RESET_PIPELINES_DIR=${RESET_PIPELINES_DIR}'
+      - 'PIPELINES_URLS=${PIPELINES_URLS}'	  
 #     - 'PIPELINES_REQUIREMENTS_PATH=${PIPELINES_REQUIREMENTS_PATH}'
-      - 'PIPELINES_URLS=${PIPELINES_URLS}'
 #     - 'ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY}'
 #     - 'COHERE_API_KEY=${COHERE_API_KEY}'
 #     - 'GOOGLE_API_KEY=${GOOGLE_API_KEY}'
@@ -114,27 +114,27 @@ services:
     networks:
       - "hyperspace"
 
-#  openedai-speech:
-#    image: ghcr.io/matatonic/openedai-speech:latest
-#    container_name: open-webui-openedai-speech
-#    ports:
-#      - "8000:8000"
-#    volumes:
-#      - ./.data-openedai-speech/voices:/app/voices
-#      - ./.data-openedai-speech/config:/app/config
-#    restart: unless-stopped
-#    deploy:
-#      resources:
-#        reservations:
-#          devices:
-#            - driver: nvidia
-#              count: 1
-#              capabilities:
-#                - gpu
-#    depends_on:
-#      - open-webui-dev-cuda
-#    networks:
-#      - "hyperspace"
+  openedai-speech:
+    image: ghcr.io/matatonic/openedai-speech:latest
+    container_name: open-webui-openedai-speech
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./.data-openedai-speech/voices:/app/voices
+      - ./.data-openedai-speech/config:/app/config
+    restart: unless-stopped
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities:
+                - gpu
+    depends_on:
+      - open-webui-dev-cuda
+    networks:
+      - "hyperspace"
 
 #  chromadb:
 #    image: docker.io/chromadb/chroma:latest
