@@ -4,8 +4,12 @@
 # Pipelines (owui modding/scaling)| https://github.com/open-webui/pipelines/ | https://docs.openwebui.com/pipelines/
 # Tika (RAG) | https://tika.apache.org/
 # OpenedAI-Speech (text-to-speech)| https://github.com/matatonic/openedai-speech
-# Postgres (SQL DB) (optional) | https://www.postgresql.org/
-# ChromaDB (RAG) (optional) | https://docs.trychroma.com/
+# Postgres (SQL DB) (optional database) | https://www.postgresql.org/
+# ChromaDB (RAG) (optional database) | https://docs.trychroma.com/
+# Prometheus (optional monitoring) | https://prometheus.io/docs/introduction/overview/
+# Grafana (optional monitoring) | https://grafana.com/
+# Node Exporter (optional monitoring) | https://github.com/prometheus/node_exporter
+# Cadvisor (optional monitoring) | https://github.com/google/cadvisor
 
 services:
 #  ollama:
@@ -169,7 +173,79 @@ services:
 #    restart: unless-stopped
 #    networks:
 #      - "hyperspace"
+
+  prometheus:
+    image: bitnami/prometheus:latest
+    container_name: open-webui-prometheus
+    ports:
+      - 9090:9090
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yaml'
+    volumes:
+      - ./.data-prometheus/config/prometheus.yaml:/etc/prometheus/prometheus.yaml:ro
+      - ./.data-prometheus/data:/prometheus
+    restart: unless-stopped
+    networks:
+      - "hyperspace"
   
+  grafana:
+    image: grafana/grafana
+    container_name: open-webui-grafana
+    ports:
+      - '3333:3000'
+    volumes:
+      - ./.data-grafana:/var/lib/grafana
+    restart: unless-stopped
+#   password: root1234567890
+    networks:
+      - "hyperspace"
+  
+  node_exporter:
+    image: quboleinc/node_exporter
+    container_name: open-webui-node_exporter
+    pid: host
+    ports:
+      - '9100:9100'
+    restart: unless-stopped
+    volumes:
+      - /proc:/host/proc:ro
+      - /sys:/host/sys:ro
+      - /:/rootfs:ro
+    command:
+      - '--path.rootfs=/host'
+      - '--path.procfs=/host/proc'
+      - '--path.rootfs=/rootfs'
+      - '--path.sysfs=/host/sys'
+      - '--collector.filesystem.mount-points-exclude=^/(sys|proc|dev|host|etc)($$|/)'
+    networks:
+      - "hyperspace"
+      
+  cadvisor:
+    image: gcr.io/cadvisor/cadvisor
+    container_name: open-webui-cadvisor
+    command:
+      - '-port=8098'
+    ports:
+      - '8098:8098'    
+    volumes:
+      - /:/rootfs:ro
+      - /var/run:/var/run:ro
+      - /sys:/sys:ro
+      - /var/lib/docker/:/var/lib/docker:ro
+      - /dev/disk/:/dev/disk:ro
+    devices:
+      - /dev/kmsg
+    privileged: true
+    restart: unless-stopped
+    networks:
+      - "hyperspace"
+ 
+volumes:
+  prometheus-data:
+    driver: local
+  grafana-data:
+    driver: local
+ 
 networks:
   hyperspace:
     external: true
