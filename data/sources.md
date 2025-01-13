@@ -1,6 +1,5 @@
 # DATA SOURCES
 
-
 - https://dumps.wikimedia.org/enwiki/latest/enwiki-latest-pages-articles.xml.bz2
   - English text only Wikipedia dump
 - https://github.com/jcpeterson/openwebtext
@@ -11,6 +10,8 @@
   - Project Gutenberg is a library of over 75,000 free eBooks.
 - https://huggingface.co/datasets
   - Large ever growing collection of datasets
+- https://www.kaggle.com/datasets
+  - Explore, analyze, and share quality data. Learn more about data types, creating, and collaborating.
 - https://institutionaldatainitiative.org/
   - The Institutional Data Initiative is a research initiative at Harvard Law School Library. We work with knowledge institutions—from libraries and museums to cultural groups and government agencies—to refine and publish their collections as data.
 - https://source.plus/
@@ -23,4 +24,9 @@
   - Large archive of data
 - https://archive.org/details/stackexchange
   - An anonymized dump of all user-contributed content on the Stack Exchange network.
-
+- https://apps.nationalmap.gov/datasets/
+  - USGS topological datasets
+- https://www.archives.gov/open/available-datasets.html
+  - National Archives datasets
+- https://data.nasa.gov/browse?sortBy=newest&page=1&pageSize=20
+  - NASA archives for machine learning training
