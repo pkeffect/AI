@@ -12,6 +12,8 @@
   - Project Gutenberg is a library of over 75,000 free eBooks.
 - https://huggingface.co/datasets
   - Large ever growing collection of datasets
+- https://archive.ics.uci.edu/
+  - UC Irvine Machine Learning Datasets
 - https://www.kaggle.com/datasets
   - Explore, analyze, and share quality data. Learn more about data types, creating, and collaborating.
 - https://institutionaldatainitiative.org/
@@ -32,3 +34,7 @@
   - National Archives datasets
 - https://data.nasa.gov/browse?sortBy=newest&page=1&pageSize=20
   - NASA archives for machine learning training
+- https://data.gov/
+  - The Home of the U.S. Government's Open Data
+- https://www.hathitrust.org/
+  - HathiTrust is a partnership of academic and research institutions that preserves and provides access to digitized collections of books, journals, and other materials. Search, browse, and explore featured titles, news, events, and projects from HathiTrust.
