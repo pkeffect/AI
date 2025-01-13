@@ -1,16 +1,22 @@
 # DATA SOURCES
 
 
-https://dumps.wikimedia.org/enwiki/latest/enwiki-latest-pages-articles.xml.bz2 - English text only Wikipedia dump
-https://github.com/jcpeterson/openwebtext - Open clone of OpenAI's unreleased WebText dataset scraper. This version uses pushshift.io files instead of the API for speed. 
-https://www.gutenberg.org/ - Project Gutenberg is a library of over 75,000 free eBooks
-https://huggingface.co/datasets - Large ever growing collection of datasets
-https://institutionaldatainitiative.org/ - The Institutional Data Initiative is a research initiative at Harvard Law School Library. We work with knowledge institutions—from libraries and museums to cultural groups and government agencies—to refine and publish their collections as data.
-https://source.plus/ - A new approach to foundation models: Public Diffusion is being trained on Public Domain and CC0 images. High-quality. Fully open. Made for fine-tuning. 
-
-https://annas-archive.org/datasets - The largest truly open library in human history. ⭐️ We mirror Sci-Hub and LibGen. We scrape and open-source Z-Lib, DuXiu, and more. 📈 40,369,782 books, 59,706,965 papers — preserved forever. All our code and data are completely open source.
-
-https://wiki.archiveteam.org/  - Archive Team is a loose collective of rogue archivists, programmers, writers and loudmouths dedicated to saving our digital heritage. Since 2009 this variant force of nature has caught wind of shutdowns, shutoffs, mergers, and plain old deletions - and done our best to save the history before it's lost forever.
-
-https://the-eye.eu/ - Large archive of data
+- https://dumps.wikimedia.org/enwiki/latest/enwiki-latest-pages-articles.xml.bz2
+  - English text only Wikipedia dump
+- https://github.com/jcpeterson/openwebtext
+  - Open clone of OpenAI's unreleased WebText dataset scraper. This version uses pushshift.io files instead of the API for speed. 
+- https://www.gutenberg.org/
+  - Project Gutenberg is a library of over 75,000 free eBooks
+- https://huggingface.co/datasets
+  - Large ever growing collection of datasets
+- https://institutionaldatainitiative.org/
+  - The Institutional Data Initiative is a research initiative at Harvard Law School Library. We work with knowledge institutions—from libraries and museums to cultural groups and government agencies—to refine and publish their collections as data.
+- https://source.plus/
+  - A new approach to foundation models: Public Diffusion is being trained on Public Domain and CC0 images. High-quality. Fully open. Made for fine-tuning. 
+- https://annas-archive.org/datasets
+  - The largest truly open library in human history. ⭐️ We mirror Sci-Hub and LibGen. We scrape and open-source Z-Lib, DuXiu, and more. 📈 40,369,782 books, 59,706,965 papers — preserved forever. All our code and data are completely open source.
+- https://wiki.archiveteam.org/
+  - Archive Team is a loose collective of rogue archivists, programmers, writers and loudmouths dedicated to saving our digital heritage. Since 2009 this variant force of nature has caught wind of shutdowns, shutoffs, mergers, and plain old deletions - and done our best to save the history before it's lost forever.
+- https://the-eye.eu/
+  - Large archive of data
 
