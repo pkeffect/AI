@@ -4,9 +4,11 @@
 - https://dumps.wikimedia.org/enwiki/latest/enwiki-latest-pages-articles.xml.bz2
   - English text only Wikipedia dump
 - https://github.com/jcpeterson/openwebtext
-  - Open clone of OpenAI's unreleased WebText dataset scraper. This version uses pushshift.io files instead of the API for speed. 
+  - Open clone of OpenAI's unreleased WebText dataset scraper. This version uses pushshift.io files instead of the API for speed.
+- https://openlibrary.org/developers/dumps
+  - Open Library provides dumps of all its data, generated every month.
 - https://www.gutenberg.org/
-  - Project Gutenberg is a library of over 75,000 free eBooks
+  - Project Gutenberg is a library of over 75,000 free eBooks.
 - https://huggingface.co/datasets
   - Large ever growing collection of datasets
 - https://institutionaldatainitiative.org/
@@ -19,4 +21,6 @@
   - Archive Team is a loose collective of rogue archivists, programmers, writers and loudmouths dedicated to saving our digital heritage. Since 2009 this variant force of nature has caught wind of shutdowns, shutoffs, mergers, and plain old deletions - and done our best to save the history before it's lost forever.
 - https://the-eye.eu/
   - Large archive of data
+- https://archive.org/details/stackexchange
+  - An anonymized dump of all user-contributed content on the Stack Exchange network.
 
