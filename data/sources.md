@@ -1,5 +1,7 @@
 # DATA SOURCES
 
+- https://github.com/Zjh-819/LLMDataHub
+  - Awesome Datasets for LLM Training
 - https://dumps.wikimedia.org/enwiki/latest/enwiki-latest-pages-articles.xml.bz2
   - English text only Wikipedia dump
 - https://github.com/jcpeterson/openwebtext
