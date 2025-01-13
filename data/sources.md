@@ -4,8 +4,6 @@
   - Awesome Datasets for LLM Training
 - https://dumps.wikimedia.org/enwiki/latest/enwiki-latest-pages-articles.xml.bz2
   - English text only Wikipedia dump
-- https://github.com/jcpeterson/openwebtext
-  - Open clone of OpenAI's unreleased WebText dataset scraper. This version uses pushshift.io files instead of the API for speed.
 - https://openlibrary.org/developers/dumps
   - Open Library provides dumps of all its data, generated every month.
 - https://www.gutenberg.org/
