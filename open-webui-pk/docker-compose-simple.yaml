@@ -1,0 +1,71 @@
+# Open-WebUI:dev-cuda (the heart)| https://github.com/open-webui/open-webui/ | https://docs.openwebui.com/
+# Pipelines (optional owui modding/scaling)| https://github.com/open-webui/pipelines/ | https://docs.openwebui.com/pipelines/
+# Tika (optional RAG) | https://tika.apache.org/
+
+services:
+  open-webui-dev-cuda:
+    image: ghcr.io/open-webui/open-webui:dev-cuda
+    container_name: open-webui-dev-cuda
+    stdin_open: true
+    tty: true    
+    ports:
+      - "3999:8080"
+    volumes:
+      - ./.data-open-webui:/app/backend/data
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities:
+                - gpu      
+    env_file: .env      
+    environment:
+      - 'SAFE_MODE=${SAFE_MODE}'    
+      - 'SCARF_NO_ANALYTICS=${SCARF_NO_ANALYTICS}'
+      - 'DO_NOT_TRACK=${DO_NOT_TRACK}'
+      - 'ANONYMIZED_TELEMETRY=${ANONYMIZED_TELEMETRY}'
+      - 'OLLAMA_BASE_URL=${OLLAMA_BASE_URL}'
+      - 'WEBUI_SECRET_KEY=${WEBUI_SECRET_KEY}'
+      - 'USE_CUDA_DOCKER=${USE_CUDA_DOCKER}'
+      - 'ENV=${ENV}'
+      - 'USER_AGENT=${USER_AGENT}'
+      - 'WEBUI_URL=${WEBUI_URL}'
+    extra_hosts:
+      - "host.docker.internal:host-gateway"      
+    restart: unless-stopped
+    networks:
+      - "hyperspace" #keep or change
+
+  tika:
+    image: apache/tika:latest-full
+    container_name: open-webui-tika
+    expose:
+      - "9998:9998"
+    depends_on:
+      - open-webui-dev-cuda       
+    networks:
+      - "hyperspace"
+    restart: unless-stopped
+        
+  pipelines:
+    image: ghcr.io/open-webui/pipelines:main 
+    container_name: open-webui-pipelines
+    ports:
+      - "9099:9099"
+    environment:
+      - 'RESET_PIPELINES_DIR=${RESET_PIPELINES_DIR}'
+      - 'PIPELINES_URLS=${PIPELINES_URLS}'	  
+#     - 'PIPELINES_REQUIREMENTS_PATH=${PIPELINES_REQUIREMENTS_PATH}'
+    volumes:
+      - ./.data-pipelines:/app/pipelines
+    depends_on:
+      - open-webui-dev-cuda    
+    restart: unless-stopped
+    networks:
+      - "hyperspace" #keep or change
+      
+networks:
+  hyperspace: #keep or change
+    external: true
