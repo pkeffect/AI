@@ -1,7 +1,4 @@
 # Open-WebUI:dev-cuda (the heart)| https://github.com/open-webui/open-webui/ | https://docs.openwebui.com/
-# Pipelines (optional owui modding/scaling)| https://github.com/open-webui/pipelines/ | https://docs.openwebui.com/pipelines/
-# Tika (optional RAG) | https://tika.apache.org/
-
 services:
   open-webui-dev-cuda:
     image: ghcr.io/open-webui/open-webui:dev-cuda
@@ -37,35 +34,6 @@ services:
     restart: unless-stopped
     networks:
       - "hyperspace" #keep or change
-
-  tika:
-    image: apache/tika:latest-full
-    container_name: open-webui-tika
-    expose:
-      - "9998:9998"
-    depends_on:
-      - open-webui-dev-cuda       
-    networks:
-      - "hyperspace"
-    restart: unless-stopped
-        
-  pipelines:
-    image: ghcr.io/open-webui/pipelines:main 
-    container_name: open-webui-pipelines
-    ports:
-      - "9099:9099"
-    environment:
-      - 'RESET_PIPELINES_DIR=${RESET_PIPELINES_DIR}'
-      - 'PIPELINES_URLS=${PIPELINES_URLS}'	  
-#     - 'PIPELINES_REQUIREMENTS_PATH=${PIPELINES_REQUIREMENTS_PATH}'
-    volumes:
-      - ./.data-pipelines:/app/pipelines
-    depends_on:
-      - open-webui-dev-cuda    
-    restart: unless-stopped
-    networks:
-      - "hyperspace" #keep or change
-      
 networks:
   hyperspace: #keep or change
     external: true
