@@ -1,4 +1,5 @@
 # DATA SOURCES
+Petabytes of data for training.
 
 - https://github.com/Zjh-819/LLMDataHub
   - Awesome Datasets for LLM Training
